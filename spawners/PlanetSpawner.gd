@@ -24,8 +24,8 @@ func spawn_planet():
 	p.rotate_speed = rg.randf_range(-3, 3)
 	p.move_speed = rg.randf_range(3, 15)
 	
-	# add as child
-	add_child(p)
+	# add to scene
+	get_tree().current_scene.call_deferred("add_child", p)
 	
 	$Timer.wait_time = rg.randf_range(90, 180) / get_tree().current_scene.speed_scale
 	$Timer.start()

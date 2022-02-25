@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/asteroids/asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://play-score.gd" type="Script" id=12]
 [ext_resource path="res://assets/spaceships/spaceship-2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/font/ButtonText.tres" type="DynamicFont" id=14]
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -26,9 +27,17 @@ corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 
-[sub_resource type="DynamicFont" id=6]
-size = 45
+[sub_resource type="DynamicFont" id=11]
+size = 43
 font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 0.196078 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.231373, 0.231373, 0.231373, 1 )
@@ -123,7 +132,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("UI/Panel/Menu:disabled")
+tracks/4/path = NodePath("UI/Panel/container/Menu:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -201,7 +210,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("UI/Panel/Restart:disabled")
+tracks/3/path = NodePath("UI/Panel/container/Restart:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -213,7 +222,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("UI/Panel/Menu:disabled")
+tracks/4/path = NodePath("UI/Panel/container/Menu:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -229,6 +238,7 @@ tracks/4/keys = {
 script = ExtResource( 12 )
 spaceships = [ ExtResource( 8 ), ExtResource( 13 ) ]
 speed_up = 0.01
+text_name_path = NodePath("UI/Panel/container/TextEdit")
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -280,18 +290,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Restart" type="Button" parent="UI/Panel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -156.0
-margin_top = 250.0
-margin_right = 156.0
-margin_bottom = 303.0
+[node name="container" type="VBoxContainer" parent="UI/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="space" type="Control" parent="UI/Panel/container"]
+margin_right = 340.0
+margin_bottom = 236.0
+size_flags_vertical = 3
+
+[node name="TextEdit" type="LineEdit" parent="UI/Panel/container"]
+margin_top = 240.0
+margin_right = 340.0
+margin_bottom = 291.0
 focus_neighbour_top = NodePath("../Menu")
+focus_neighbour_bottom = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Menu")
+custom_fonts/font = SubResource( 11 )
+custom_styles/normal = SubResource( 10 )
+placeholder_text = "Enter a name here"
+
+[node name="Restart" type="Button" parent="UI/Panel/container"]
+margin_top = 295.0
+margin_right = 340.0
+margin_bottom = 348.0
+focus_neighbour_top = NodePath("../TextEdit")
 focus_neighbour_bottom = NodePath("../Menu")
 focus_next = NodePath("../Menu")
-focus_previous = NodePath("../Menu")
-custom_fonts/font = SubResource( 6 )
+focus_previous = NodePath("../TextEdit")
+custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/disabled = SubResource( 2 )
@@ -301,18 +336,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="Button" parent="UI/Panel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -156.0
-margin_top = 325.0
-margin_right = 156.0
-margin_bottom = 378.0
+[node name="Menu" type="Button" parent="UI/Panel/container"]
+margin_top = 352.0
+margin_right = 340.0
+margin_bottom = 405.0
 focus_neighbour_top = NodePath("../Restart")
-focus_neighbour_bottom = NodePath("../Restart")
-focus_next = NodePath("../Restart")
+focus_neighbour_bottom = NodePath("../TextEdit")
+focus_next = NodePath("../TextEdit")
 focus_previous = NodePath("../Restart")
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 7 )
 custom_styles/disabled = SubResource( 2 )
@@ -344,6 +376,6 @@ anims/player_dead = SubResource( 8 )
 [connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="PlanetSpawner/Timer" to="PlanetSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="StarSpawner/Timer" to="StarSpawner" method="_on_Timer_timeout"]
-[connection signal="pressed" from="UI/Panel/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="UI/Panel/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="UI/Panel/container/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="UI/Panel/container/Menu" to="." method="_on_Menu_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

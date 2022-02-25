@@ -1,5 +1,10 @@
 extends Control
+
 export (PackedScene) var play_scene
+export (PackedScene) var score_p
+export (NodePath) var scores_path
+
+onready var scores = get_node(scores_path)
 
 var ship_data = [
 	{
@@ -15,11 +20,20 @@ var ship_data = [
 ]
 
 var speed_scale = 1
-var cship = 0
+var cship = Globals.ship
 var mode
 
 func _ready():
 	$AnimationPlayer.play("enter")
+	
+	Globals.process_scores()
+	for score in Globals.high_scores:
+		var c = score_p.instance()
+		
+		c.highscore_name = score["name"]
+		c.highscore_score = score["score"]
+		
+		scores.add_child(c)
 
 func _on_Play_pressed():
 	$AnimationPlayer.play("exit")
@@ -34,8 +48,8 @@ func _on_Quit_pressed():
 
 
 func _on_Highscores_pressed():
-	pass # Replace with function body.
-
+	$AnimationPlayer.play("exit")
+	mode = "scores"
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "exit":
@@ -45,6 +59,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if mode == "ships":
 			# Star equipped ship
 			$AnimationPlayer.play("show_ships")
+		if mode == "scores":
+			$AnimationPlayer.play("Show Scores")
 	if anim_name == "enter":
 		$Buttons/Play.grab_focus()
 	if anim_name == "hide_ships":
@@ -59,6 +75,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("show_ships")
 	if anim_name == "overview_ship":
 		$ShipOverview/VManage/Buttons/Equip.grab_focus()
+	if anim_name == "Hide Scores":
+		$AnimationPlayer.play("enter")
 
 func _on_Back_pressed():
 	$AnimationPlayer.play("hide_ships")
@@ -90,3 +108,7 @@ func _on_S2_pressed():
 	set_overview()
 	$AnimationPlayer.play("hide_ships")
 	mode = "overview"
+
+
+func _on_Back_Highscores_pressed():
+	$AnimationPlayer.play("Hide Scores")
