@@ -33,7 +33,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": false,
 "name": "explosion",
-"speed": 30.0
+"speed": 20.0
 } ]
 
 [node name="explode" type="AnimatedSprite"]

@@ -6,7 +6,7 @@ var rotate_speed
 
 func _process(delta):
 	# move and rotate planet
-	position.y += move_speed * delta
+	position.y += move_speed * delta * get_tree().current_scene.speed_scale
 	rotation_degrees += rotate_speed * delta
 	
 	# check if planet is outside view

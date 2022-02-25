@@ -124,6 +124,7 @@ func die():
 	e.scale = scale
 	e.position = position
 	get_tree().current_scene.add_child(e)
+	get_tree().current_scene.player_die()
 	
 	queue_free()
 

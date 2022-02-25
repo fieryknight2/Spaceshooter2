@@ -27,7 +27,7 @@ func spawn_planet():
 	# add as child
 	add_child(p)
 	
-	$Timer.wait_time = rg.randf_range(90, 180)
+	$Timer.wait_time = rg.randf_range(90, 180) / get_tree().current_scene.speed_scale
 	$Timer.start()
 
 func _on_Timer_timeout():
