@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/spaceships/spaceship.png" type="Texture" id=1]
-[ext_resource path="res://assets/spaceships/red.png" type="Texture" id=2]
+[ext_resource path="res://assets/spaceships/spaceship.gd" type="Script" id=1]
+[ext_resource path="res://assets/spaceships/blue.png" type="Texture" id=2]
 [ext_resource path="res://assets/spaceships/green.png" type="Texture" id=3]
-[ext_resource path="res://assets/spaceships/blue.png" type="Texture" id=4]
-[ext_resource path="res://assets/spaceships/spaceship.gd" type="Script" id=5]
+[ext_resource path="res://assets/spaceships/red.png" type="Texture" id=4]
+[ext_resource path="res://assets/spaceships/spaceship-2.png" type="Texture" id=5]
 [ext_resource path="res://assets/explosions/explosion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/projectiles/laser-blue.tscn" type="PackedScene" id=7]
 
@@ -27,80 +27,71 @@ ProgressBar/styles/bg = SubResource( 4 )
 ProgressBar/styles/fg = SubResource( 2 )
 
 [node name="Spaceship" type="Area2D" groups=["ships"]]
-z_index = 100
-script = ExtResource( 5 )
-move_speed = 10.0
-action_speed = 20.0
-max_velocity = 30.0
-deceleration = 20.0
-reload_time = 0.3
-damage = 1
-max_health = 50
-health_reload = 1.0
-wall_boundaries = 35.0
+script = ExtResource( 1 )
+move_speed = 15.0
+action_speed = 25.0
+max_velocity = 20.0
+deceleration = 40.0
+reload_time = 0.6
+damage = 3
+max_health = 25
+health_reload = 1.5
+wall_boundaries = 30.0
 explosion = ExtResource( 6 )
 projectile = ExtResource( 7 )
-fire_points = [ NodePath("FP1"), NodePath("FP2"), NodePath("FP3"), NodePath("FP4") ]
+fire_points = [ NodePath("FP1"), NodePath("FP2") ]
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 
 [node name="P1" type="CPUParticles2D" parent="Sprite"]
 show_behind_parent = true
-position = Vector2( 0, 29 )
-amount = 15
-lifetime = 0.5
-randomness = 0.68
-lifetime_randomness = 0.61
-texture = ExtResource( 2 )
-direction = Vector2( 0, 10 )
-spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 100.0
-
-[node name="P2" type="CPUParticles2D" parent="Sprite"]
-show_behind_parent = true
-position = Vector2( 0, 29 )
-z_index = -1
-lifetime = 0.5
+position = Vector2( -1, 13 )
+amount = 12
+lifetime = 0.3
 randomness = 0.68
 lifetime_randomness = 0.61
 texture = ExtResource( 4 )
 direction = Vector2( 0, 10 )
-spread = 20.0
+spread = 15.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 100.0
+initial_velocity = 150.0
+
+[node name="P2" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( -1, 13 )
+z_index = -1
+amount = 6
+lifetime = 0.3
+randomness = 0.68
+lifetime_randomness = 0.61
+texture = ExtResource( 2 )
+direction = Vector2( 0, 10 )
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
 scale_amount = 0.5
 
 [node name="P3" type="CPUParticles2D" parent="Sprite"]
 show_behind_parent = true
-position = Vector2( 0, 29 )
+position = Vector2( -1, 13 )
 z_index = -1
-amount = 5
-lifetime = 0.5
+amount = 3
+lifetime = 0.3
 randomness = 0.68
 lifetime_randomness = 0.61
 texture = ExtResource( 3 )
-direction = Vector2( 0, 10 )
+direction = Vector2( 0, 5 )
 spread = 20.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 100.0
+initial_velocity = 150.0
 scale_amount = 0.35
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 7, -30.8, 13, -20.8, 13, -2, 13.7, 6.1, 17, 4.3, 17, -2, 23.8, -11.5, 28, -10.2, 28, -8, 32, -2.2, 32, 21.5, 31.2, 24, 27.7, 24, 13.2, 32, -13.5, 32, -32, 22.3, -32, 0, -26.9, -11, -21.7, -11, -17.6, 3.3, -14, 5.2, -14, -2.1, -12.8, -23, -10.8, -23, -7, -30.7, -7, -32, 7, -32 )
-
 [node name="FP1" type="Position2D" parent="."]
-position = Vector2( -24, 3 )
+position = Vector2( -21, -3 )
 
 [node name="FP2" type="Position2D" parent="."]
-position = Vector2( 24, 3 )
-
-[node name="FP3" type="Position2D" parent="."]
-position = Vector2( 20, 9 )
-
-[node name="FP4" type="Position2D" parent="."]
-position = Vector2( -20, 9 )
+position = Vector2( 19, -3 )
 
 [node name="Reload" type="Timer" parent="."]
 
@@ -116,6 +107,9 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 19, -20.9, 19, -17.3, 15.7, -13, 18.5, -13, 26, -9.2, 26, -6, 29.2, 29, 26.8, 29, 23.9, 32, 20, 32, 20, 30.9, 4.3, 16.2, -1.9, 20.3, -4, 19.2, -4, 18.1, -6.1, 16.9, -21.2, 32, -24.2, 32, -30, 30.6, -30, 27, -29, -8, -26.8, -8, -20.5, -14.4, -19.3, -13.9, -22.3, -17.8, -21.2, -20, -19.9, -20, -9, -31.9, 7, -32 )
 
 [connection signal="area_entered" from="." to="." method="_on_Spaceship_area_entered"]
 [connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]

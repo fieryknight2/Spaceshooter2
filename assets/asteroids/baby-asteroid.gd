@@ -32,7 +32,7 @@ func _process(delta):
 	
 	if health <= 0:
 		die()
-	$cracks.frame = int(health/mhealth * 5)
+	$cracks.frame = clamp(int(health/mhealth * 5), 0, 5)
 
 func die():
 	# boom

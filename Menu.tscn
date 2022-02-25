@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Star.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://menu.gd" type="Script" id=4]
 [ext_resource path="res://PlayScene.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/spaceships/spaceship-2.png" type="Texture" id=6]
+[ext_resource path="res://assets/spaceships/spaceship.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
@@ -51,6 +53,31 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="DynamicFont" id=11]
+size = 45
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+outline_color = Color( 1, 0, 0, 1 )
+extra_spacing_char = 2
+font_data = ExtResource( 3 )
+
 [sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
@@ -90,7 +117,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 373 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Buttons/Achievements:rect_position")
+tracks/3/path = NodePath("Buttons/Quit:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -102,7 +129,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 437 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Quit:rect_position")
+tracks/4/path = NodePath("Buttons/Play:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -111,10 +138,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 501 ) ]
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Buttons/Play:disabled")
+tracks/5/path = NodePath("Buttons/Ships:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -126,7 +153,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Ships:disabled")
+tracks/6/path = NodePath("Buttons/Highscores:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -138,7 +165,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/Highscores:disabled")
+tracks/7/path = NodePath("Buttons/Quit:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -150,7 +177,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Achievements:disabled")
+tracks/8/path = NodePath("Buttons/Play:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -159,10 +186,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ Vector2( 0, 245 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Buttons/Quit:disabled")
+tracks/9/path = NodePath("Ships:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -171,10 +198,10 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Buttons/Play:rect_position")
+tracks/10/path = NodePath("Ships:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -183,7 +210,79 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -200, 245 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("ShipOverview:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("ShipOverview:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("ShipOverview/VManage/Buttons/Back:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("ShipOverview/VManage/Buttons/Equip:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Buttons:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ships/Back:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -226,19 +325,19 @@ tracks/2/keys = {
 "values": [ Vector2( -100, 373 ), Vector2( 0, 373 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Buttons/Achievements:rect_position")
+tracks/3/path = NodePath("Buttons/Quit:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.95 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -150, 437 ), Vector2( 0, 437 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Quit:rect_position")
+tracks/4/path = NodePath("Buttons/Play:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -246,11 +345,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -200, 501 ), Vector2( 0, 501 ) ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Buttons/Play:disabled")
+tracks/5/path = NodePath("Buttons/Ships:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -262,7 +361,7 @@ tracks/5/keys = {
 "values": [ true, false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Ships:disabled")
+tracks/6/path = NodePath("Buttons/Highscores:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -274,7 +373,7 @@ tracks/6/keys = {
 "values": [ true, false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/Highscores:disabled")
+tracks/7/path = NodePath("Buttons/Quit:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -286,28 +385,16 @@ tracks/7/keys = {
 "values": [ true, false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Achievements:disabled")
+tracks/8/path = NodePath("Buttons/Play:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Buttons/Quit:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 245 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -335,7 +422,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.85 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 309 ), Vector2( -150, 309 ) ]
+"values": [ Vector2( 0, 309 ), Vector2( -100, 309 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Buttons/Highscores:rect_position")
@@ -347,34 +434,34 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 373 ), Vector2( -100, 373 ) ]
+"values": [ Vector2( 0, 373 ), Vector2( -50, 373 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Buttons/Achievements:rect_position")
+tracks/3/path = NodePath("Buttons/Quit:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.95 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 437 ), Vector2( -50, 437 ) ]
+"values": [ Vector2( 0, 437 ), Vector2( 0, 437 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Quit:rect_position")
+tracks/4/path = NodePath("Buttons/Play:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 501 ), Vector2( 0, 501 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Buttons/Play:disabled")
+tracks/5/path = NodePath("Buttons/Ships:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -386,7 +473,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Ships:disabled")
+tracks/6/path = NodePath("Buttons/Highscores:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -398,7 +485,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/Highscores:disabled")
+tracks/7/path = NodePath("Buttons/Quit:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -410,40 +497,200 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Achievements:disabled")
+tracks/8/path = NodePath("Buttons/Play:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Buttons/Quit:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Buttons/Play:rect_position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 245 ), Vector2( -200, 245 ) ]
+"values": [ Vector2( 0, 245 ), Vector2( -150, 245 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "hide_overview"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipOverview:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShipOverview:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShipOverview/VManage/Buttons/Back:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShipOverview/VManage/Buttons/Equip:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "hide_ships"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ships:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ships:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ships/Back:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "overview_ship"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ShipOverview:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ShipOverview:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ShipOverview/VManage/Buttons/Equip:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ShipOverview/VManage/Buttons/Back:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "show_ships"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ships:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ships:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ships/Back:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Menu" type="Control"]
@@ -479,24 +726,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 34.5
-margin_right = 415.499
-margin_bottom = 800.0
-custom_constants/separation = 11
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_left = -190.5
+margin_top = -400.0
+margin_right = 190.497
+margin_bottom = 400.0
 
 [node name="Play" type="Button" parent="Buttons"]
-margin_left = -200.0
 margin_top = 245.0
-margin_right = 180.0
+margin_right = 380.0
 margin_bottom = 298.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Ships")
@@ -537,8 +779,6 @@ margin_top = 373.0
 margin_right = 380.0
 margin_bottom = 426.0
 focus_neighbour_top = NodePath("../Ships")
-focus_neighbour_bottom = NodePath("../Achievements")
-focus_next = NodePath("../Achievements")
 focus_previous = NodePath("../Ships")
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
@@ -551,33 +791,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Achievements" type="Button" parent="Buttons"]
+[node name="Quit" type="Button" parent="Buttons"]
 margin_top = 437.0
 margin_right = 380.0
 margin_bottom = 490.0
-focus_neighbour_top = NodePath("../Highscores")
-focus_neighbour_bottom = NodePath("../Quit")
-focus_next = NodePath("../Quit")
-focus_previous = NodePath("../Highscores")
-custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/disabled = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
-disabled = true
-text = "Achievements"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Quit" type="Button" parent="Buttons"]
-margin_top = 501.0
-margin_right = 380.0
-margin_bottom = 554.0
-focus_neighbour_top = NodePath("../Achievements")
 focus_neighbour_bottom = NodePath("../Play")
 focus_next = NodePath("../Play")
-focus_previous = NodePath("../Achievements")
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 4 )
@@ -589,15 +808,198 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Ships" type="VBoxContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -155.0
+margin_top = -6.0
+margin_right = 155.0
+margin_bottom = 6.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Simple" type="VBoxContainer" parent="Ships"]
+margin_right = 310.0
+margin_bottom = 144.0
+
+[node name="S1" type="Button" parent="Ships/Simple"]
+margin_right = 310.0
+margin_bottom = 70.0
+focus_next = NodePath("../S2")
+custom_fonts/font = SubResource( 9 )
+text = "Swallow"
+icon = ExtResource( 7 )
+flat = true
+
+[node name="S2" type="Button" parent="Ships/Simple"]
+margin_top = 74.0
+margin_right = 310.0
+margin_bottom = 144.0
+focus_next = NodePath("../S1")
+focus_previous = NodePath("../../Back")
+custom_fonts/font = SubResource( 9 )
+text = "Swift"
+icon = ExtResource( 6 )
+flat = true
+
+[node name="Sep" type="HSeparator" parent="Ships"]
+margin_top = 148.0
+margin_right = 310.0
+margin_bottom = 152.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Advanced" type="VBoxContainer" parent="Ships"]
+margin_top = 156.0
+margin_right = 310.0
+margin_bottom = 156.0
+
+[node name="Back" type="Button" parent="Ships"]
+margin_top = 160.0
+margin_right = 310.0
+margin_bottom = 213.0
+focus_previous = NodePath("../Simple/S2")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipOverview" type="Panel" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.5
+margin_top = -152.0
+margin_right = 153.5
+margin_bottom = 152.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VManage" type="VBoxContainer" parent="ShipOverview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overview" type="HBoxContainer" parent="ShipOverview/VManage"]
+margin_right = 307.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Image" type="TextureRect" parent="ShipOverview/VManage/Overview"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 6 )
+
+[node name="Name" type="Label" parent="ShipOverview/VManage/Overview"]
+margin_left = 68.0
+margin_top = 7.0
+margin_right = 173.0
+margin_bottom = 56.0
+custom_fonts/font = SubResource( 11 )
+text = "Swift"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="ShipOverview/VManage"]
+margin_top = 68.0
+margin_right = 307.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 12 )
+text = "Weak but fast ship, with two Triple Lasers for blasting asteroids in style."
+autowrap = true
+
+[node name="space" type="Control" parent="ShipOverview/VManage"]
+margin_top = 111.0
+margin_right = 307.0
+margin_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="ShipOverview/VManage"]
+margin_top = 119.0
+margin_right = 307.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Back" type="Button" parent="ShipOverview/VManage/Buttons"]
+margin_left = 1.0
+margin_right = 151.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 150, 0 )
+focus_neighbour_left = NodePath("../Equip")
+focus_neighbour_right = NodePath("../Equip")
+focus_next = NodePath("../Equip")
+focus_previous = NodePath("../Equip")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equip" type="Button" parent="ShipOverview/VManage/Buttons"]
+margin_left = 155.0
+margin_right = 305.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 150, 0 )
+focus_neighbour_left = NodePath("../Back")
+focus_neighbour_right = NodePath("../Back")
+focus_next = NodePath("../Back")
+focus_previous = NodePath("../Back")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+disabled = true
+text = "Equip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 6 )
 anims/enter = SubResource( 7 )
 anims/exit = SubResource( 8 )
+anims/hide_overview = SubResource( 16 )
+anims/hide_ships = SubResource( 14 )
+anims/overview_ship = SubResource( 15 )
+anims/show_ships = SubResource( 13 )
 
 [connection signal="timeout" from="StarSpawner/Timer" to="StarSpawner" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Buttons/Ships" to="." method="_on_Ships_pressed"]
 [connection signal="pressed" from="Buttons/Highscores" to="." method="_on_Highscores_pressed"]
-[connection signal="pressed" from="Buttons/Achievements" to="." method="_on_Achievements_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Ships/Simple/S1" to="." method="_on_S1_pressed"]
+[connection signal="pressed" from="Ships/Simple/S2" to="." method="_on_S2_pressed"]
+[connection signal="pressed" from="Ships/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ShipOverview/VManage/Buttons/Back" to="." method="_on_Back_Overview_pressed"]
+[connection signal="pressed" from="ShipOverview/VManage/Buttons/Equip" to="." method="_on_Equip_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
