@@ -16,6 +16,11 @@ var ship_data = [
 		"name": "Swift",
 		"image": preload("res://assets/spaceships/spaceship-2.png"),
 		"description": "Weak but fast ship, with two Triple Lasers for blasting asteroids in style."
+	},
+	{
+		"name": "Falcon",
+		"image": preload("res://assets/spaceships/spaceship-3.png"),
+		"description": "A slow sniper with medium health and high damage, with 1 Super Laser"
 	}
 ]
 
@@ -77,6 +82,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$ShipOverview/VManage/Buttons/Equip.grab_focus()
 	if anim_name == "Hide Scores":
 		$AnimationPlayer.play("enter")
+	if anim_name == "Show Scores":
+		$HighScores/Container/Back.grab_focus()
 
 func _on_Back_pressed():
 	$AnimationPlayer.play("hide_ships")
@@ -109,6 +116,12 @@ func _on_S2_pressed():
 	$AnimationPlayer.play("hide_ships")
 	mode = "overview"
 
+func _on_S3_pressed():
+	cship = 2
+	set_overview()
+	$AnimationPlayer.play("hide_ships")
+	mode = "overview"
 
 func _on_Back_Highscores_pressed():
 	$AnimationPlayer.play("Hide Scores")
+

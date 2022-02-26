@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/asteroids/asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://play-score.gd" type="Script" id=12]
 [ext_resource path="res://assets/spaceships/spaceship-2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/font/ButtonText.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/spaceships/spaceship-3.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -236,7 +237,7 @@ tracks/4/keys = {
 
 [node name="PlayScene" type="Node2D"]
 script = ExtResource( 12 )
-spaceships = [ ExtResource( 8 ), ExtResource( 13 ) ]
+spaceships = [ ExtResource( 8 ), ExtResource( 13 ), ExtResource( 15 ) ]
 speed_up = 0.01
 text_name_path = NodePath("UI/Panel/container/TextEdit")
 

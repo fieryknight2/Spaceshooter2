@@ -15,7 +15,6 @@ func _enter_tree():
 	prev_name = x.get_line()
 	
 	process_scores()
-	print(high_scores)
 	
 func _exit_tree():
 	var x = File.new()
@@ -26,8 +25,8 @@ func _exit_tree():
 
 func process_scores():
 	high_scores.sort_custom(self, "sort_scores")
-	if high_scores.size() > 10:
-		high_scores.resize(10)
+	if high_scores.size() > 15:
+		high_scores.resize(15)
 	
 func sort_scores(a, b):
 	if a["score"] > b["score"]:

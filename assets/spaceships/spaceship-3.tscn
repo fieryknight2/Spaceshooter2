@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/spaceships/spaceship.gd" type="Script" id=1]
+[ext_resource path="res://assets/spaceships/blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/spaceships/green.png" type="Texture" id=3]
+[ext_resource path="res://assets/spaceships/red.png" type="Texture" id=4]
+[ext_resource path="res://assets/spaceships/spaceship-3.png" type="Texture" id=5]
+[ext_resource path="res://assets/explosions/explosion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/projectiles/laser-blue.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 0, 0, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 1, 0, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id=3]
+ProgressBar/styles/bg = SubResource( 4 )
+ProgressBar/styles/fg = SubResource( 2 )
+
+[node name="Spaceship" type="Area2D" groups=["ships"]]
+script = ExtResource( 1 )
+move_speed = 10.0
+action_speed = 20.0
+max_velocity = 40.0
+deceleration = 80.0
+reload_time = 1.0
+damage = 10
+max_health = 75
+health_reload = 0.75
+wall_boundaries = 30.0
+explosion = ExtResource( 6 )
+projectile = ExtResource( 7 )
+fire_points = [ NodePath("FP1") ]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+
+[node name="P1" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, 29 )
+amount = 12
+lifetime = 0.3
+randomness = 0.68
+lifetime_randomness = 0.61
+texture = ExtResource( 4 )
+direction = Vector2( 0, 10 )
+spread = 15.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+
+[node name="P2" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, 29 )
+z_index = -1
+amount = 6
+lifetime = 0.3
+randomness = 0.68
+lifetime_randomness = 0.61
+texture = ExtResource( 2 )
+direction = Vector2( 0, 10 )
+spread = 10.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+scale_amount = 0.5
+
+[node name="P3" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+position = Vector2( 0, 29 )
+z_index = -1
+amount = 3
+lifetime = 0.3
+randomness = 0.68
+lifetime_randomness = 0.61
+texture = ExtResource( 3 )
+direction = Vector2( 0, 5 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+scale_amount = 0.35
+
+[node name="FP1" type="Position2D" parent="."]
+position = Vector2( 0, -25 )
+
+[node name="Reload" type="Timer" parent="."]
+
+[node name="Health" type="ProgressBar" parent="."]
+visible = false
+margin_left = -40.0
+margin_top = -44.0
+margin_right = 40.0
+margin_bottom = -42.0
+theme = SubResource( 3 )
+value = 90.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 6, -28, 11.5, 8.4, 23.1, -4, 26, -4, 31.3, 2.7, 30.3, 5, 29.2, 5, 15.2, 32, -17, 32, -32, 4.4, -32, 0, -31, 0, -28, -4, -25.5, -4, -22, -2.2, -22, -0.799999, -13.6, 7.6, -8, -28.3, -8, -32, 6, -32 )
+
+[connection signal="area_entered" from="." to="." method="_on_Spaceship_area_entered"]
+[connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]
