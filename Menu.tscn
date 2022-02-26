@@ -765,10 +765,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("ShipOverview/VManage/Buttons/Back:disabled")
@@ -777,10 +777,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -863,9 +863,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 34.5
-margin_right = 415.497
-margin_bottom = 800.0
+margin_left = -190.5
+margin_top = -400.0
+margin_right = 190.497
+margin_bottom = 400.0
 
 [node name="Play" type="Button" parent="Buttons"]
 margin_top = 245.0
@@ -1063,16 +1064,16 @@ autowrap = true
 [node name="space" type="Control" parent="ShipOverview/VManage"]
 margin_top = 111.0
 margin_right = 307.0
-margin_bottom = 111.0
+margin_bottom = 247.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Buttons" type="HBoxContainer" parent="ShipOverview/VManage"]
-margin_top = 119.0
+margin_top = 251.0
 margin_right = 307.0
-margin_bottom = 172.0
+margin_bottom = 304.0
 alignment = 1
 
 [node name="Back" type="Button" parent="ShipOverview/VManage/Buttons"]

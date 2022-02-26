@@ -29,6 +29,7 @@ var cship = Globals.ship
 var mode
 
 func _ready():
+	get_tree().paused = false
 	$AnimationPlayer.play("enter")
 	
 	Globals.process_scores()
