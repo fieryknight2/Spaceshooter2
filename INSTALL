@@ -1,0 +1,18 @@
+# How to install Spaceshooter
+It's best to just use the latest release, but here's how to play with 
+the latest code:
+
+Install Godot:
+Go to godotengine.org and download godot
+
+Download Code:
+Download the code from github by clicking Code -> Download Zip
+Or download it with git from terminal:
+git clone https://github.com/fieryknight2/Spaceshooter2.git Spaceshooter
+
+Open Project:
+Open godot and click import
+Choose the zip file or project.godot in the main folder
+
+Click the run button in the top right side of the window,
+or go to project/export and export the code to your OS (After downloading the templates)
