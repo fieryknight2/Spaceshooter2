@@ -22,6 +22,7 @@ func _on_E2_timeout():
 	
 	e.position.x = rand_range(0, get_viewport().size.x)
 	e.position.y = -100
+	e.t_dir = rand_range(-1, 1)
 	
 	get_tree().current_scene.call_deferred("add_child", e)
 	$E2.start(rand_range(35, 50) / get_tree().current_scene.speed_scale)

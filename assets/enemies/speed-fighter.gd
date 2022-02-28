@@ -21,18 +21,16 @@ func _ready():
 	$Fire.start(reload_time)
 	max_health = health
 	$Health.max_value = max_health
-	while t_dir == 0:
-		t_dir = rg.randi_range(-1, 1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$Sprite.rotation_degrees += t_dir * delta * turn_speed * get_tree().current_scene.speed_scale
-	if $Sprite.rotation_degrees < 30:
+	if $Sprite.rotation_degrees < 70:
 		t_dir = 1
-	if $Sprite.rotation_degrees > 130:
+	if $Sprite.rotation_degrees > 110:
 		t_dir = -1
-	$Sprite.rotation_degrees = clamp($Sprite.rotation_degrees, 30, 130)
+	$Sprite.rotation_degrees = clamp($Sprite.rotation_degrees, 70, 110)
 	
 	var velo = Vector2(movement_speed * get_tree().current_scene.speed_scale, 0).rotated($Sprite.rotation)
 	position += velo * delta

@@ -27,9 +27,10 @@ ProgressBar/styles/bg = SubResource( 4 )
 ProgressBar/styles/fg = SubResource( 2 )
 
 [node name="Fighter" type="Area2D" groups=["enemies"]]
+z_index = 75
 script = ExtResource( 2 )
-movement_speed = 20.0
-turn_speed = 10.0
+movement_speed = 25.0
+turn_speed = 2.0
 border = 20
 health = 25
 reload_time = 2.0

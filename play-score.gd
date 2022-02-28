@@ -25,6 +25,8 @@ func _ready():
 func _process(delta):
 	score = int(score)
 	$UI/Score.text = String(score)
+	if score > Globals.high_scores[0]["score"]:
+		$UI/High.visible = true
 	
 	speed_scale += delta * speed_up
 	
