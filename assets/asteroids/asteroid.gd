@@ -97,7 +97,7 @@ func die():
 		# add asteroid to scene
 		get_tree().current_scene.add_child(ac)
 	
-	get_tree().current_scene.score += 10 * size_value * get_tree().current_scene.speed_scale
+	get_tree().current_scene.score += 10 * size_value * get_tree().current_scene.speed_scale * get_tree().current_scene.score_mod
 	queue_free()
 
 func deal_damage(damage):

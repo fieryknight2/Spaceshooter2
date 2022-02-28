@@ -3,6 +3,7 @@ extends Node2D
 export (Array, PackedScene) var spaceships
 var score = 0
 export (float) var speed_up
+var score_mod = 1
 var speed_scale = 1
 export (NodePath) var text_name_path
 export (NodePath) var text_name_2_path
@@ -15,6 +16,7 @@ var rom = false
 func _ready():
 	get_tree().paused = false
 	var ss = spaceships[Globals.ship].instance()
+	score_mod = ss.score_modifier
 	add_child(ss)
 	
 	text_name.text = Globals.prev_name

@@ -37,6 +37,7 @@ reload_time = 0.3
 damage = 1
 max_health = 50
 health_reload = 1.0
+score_modifier = 1.0
 wall_boundaries = 35.0
 explosion = ExtResource( 6 )
 projectile = ExtResource( 7 )

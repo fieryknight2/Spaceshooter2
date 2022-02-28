@@ -9,6 +9,7 @@ export (float) var reload_time
 export (int) var damage
 export (int) var max_health
 export (float) var health_reload
+export (float) var score_modifier
 export (float) var wall_boundaries
 export (PackedScene) var explosion
 export (PackedScene) var projectile

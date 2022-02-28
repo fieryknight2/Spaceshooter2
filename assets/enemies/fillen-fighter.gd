@@ -61,12 +61,12 @@ func die():
 	e.position = position
 	get_tree().current_scene.add_child(e)
 	
-	get_tree().current_scene.score += 500 * get_tree().current_scene.speed_scale
+	get_tree().current_scene.score += 500 * get_tree().current_scene.speed_scale * get_tree().current_scene.score_mod
 	
 	queue_free()
 
 func _on_Fire_timeout():
-	$Fire.start(reload_time)
+	$Fire.start(reload_time / (get_tree().current_scene.speed_scale * 2))
 	
 	if position.y < 0:
 		return
