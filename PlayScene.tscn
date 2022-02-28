@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/asteroids/asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/spaceships/spaceship-2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/font/ButtonText.tres" type="DynamicFont" id=14]
 [ext_resource path="res://assets/spaceships/spaceship-3.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/enemies/speed-fighter.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.588235 )
@@ -488,10 +489,13 @@ autostart = true
 [node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource( 9 )
 enemy = ExtResource( 10 )
+enemy2 = ExtResource( 16 )
 
-[node name="Timer" type="Timer" parent="EnemySpawner"]
+[node name="E1" type="Timer" parent="EnemySpawner"]
 wait_time = 15.0
 autostart = true
+
+[node name="E2" type="Timer" parent="EnemySpawner"]
 
 [node name="PlanetSpawner" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -712,7 +716,8 @@ anims/player_dead = SubResource( 8 )
 anims/show_pause = SubResource( 12 )
 
 [connection signal="timeout" from="AsteroidSpawner/Timer" to="AsteroidSpawner" method="_on_Timer_timeout"]
-[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/E1" to="EnemySpawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/E2" to="EnemySpawner" method="_on_E2_timeout"]
 [connection signal="timeout" from="PlanetSpawner/Timer" to="PlanetSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="StarSpawner/Timer" to="StarSpawner" method="_on_Timer_timeout"]
 [connection signal="pressed" from="UI/Panel/container/Restart" to="." method="_on_Restart_pressed"]

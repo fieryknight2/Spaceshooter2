@@ -66,7 +66,7 @@ func die():
 	queue_free()
 
 func _on_Fire_timeout():
-	$Fire.start(reload_time / (get_tree().current_scene.speed_scale * 2))
+	$Fire.start(reload_time / get_tree().current_scene.speed_scale)
 	
 	if position.y < 0:
 		return
