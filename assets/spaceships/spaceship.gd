@@ -45,6 +45,15 @@ func _process(delta):
 	velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 	velocity.y = clamp(velocity.y, -max_velocity, max_velocity)
 	
+	if move.x > 0 and velocity.x < 0:
+		velocity.x += deceleration * delta
+	if move.x < 0 and velocity.x > 0:
+		velocity.x -= deceleration * delta
+	if move.y > 0 and velocity.y < 0:
+		velocity.y += deceleration * delta
+	if move.y < 0 and velocity.y > 0:
+		velocity.y -= deceleration * delta
+		
 	if move.x == 0:
 		if velocity.x > 0:
 			velocity.x -= deceleration * delta

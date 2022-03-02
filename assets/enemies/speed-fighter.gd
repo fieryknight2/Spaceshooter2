@@ -25,6 +25,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if health >= max_health:
+		$Health.visible = false
+	else:
+		$Health.visible = true
+		
 	$Sprite.rotation_degrees += t_dir * delta * turn_speed * get_tree().current_scene.speed_scale
 	if $Sprite.rotation_degrees < 70:
 		t_dir = 1

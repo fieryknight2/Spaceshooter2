@@ -7,7 +7,7 @@ export (PackedScene) var star
 func _ready():
 	# prespawn set amount of stars
 	# number needs tweaking
-	prespawn(300)
+	prespawn(600)
 	
 func prespawn(count):
 	# create count stars
