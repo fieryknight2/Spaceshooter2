@@ -12,7 +12,7 @@ func _process(delta):
 	position.y -= move_speed * delta
 	
 	# make sure projectile is still in view
-	if position.y < -25:
+	if position.y < 0:
 		queue_free()
 
 

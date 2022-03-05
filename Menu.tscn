@@ -865,8 +865,8 @@ anchor_right = -0.295
 anchor_bottom = 0.395
 margin_left = 303.15
 margin_top = -116.0
-margin_right = 684.147
-margin_bottom = 684.0
+margin_right = 820.047
+margin_bottom = 884.0
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false

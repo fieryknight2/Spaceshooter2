@@ -7,17 +7,22 @@ var score_mod = 1
 var speed_scale = 1
 export (NodePath) var text_name_path
 export (NodePath) var text_name_2_path
+export (NodePath) var boss_health_path
 onready var text_name = get_node(text_name_path)
 onready var text_name_2 = get_node(text_name_2_path)
+onready var boss_health = get_node(boss_health_path)
 
 var player_alive = true
+var player = null
 var rom = false
+var boss = null
 
 func _ready():
 	get_tree().paused = false
 	var ss = spaceships[Globals.ship].instance()
 	score_mod = ss.score_modifier
 	add_child(ss)
+	player = ss
 	
 	text_name.text = Globals.prev_name
 	text_name_2.text = Globals.prev_name
@@ -33,6 +38,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("pause") and player_alive:
 		get_tree().paused = true
 		$AnimationPlayer.play("show_pause")
+	
+	if boss != null:
+		boss_health.value = boss.health
 
 func player_die():
 	player_alive = false
@@ -78,3 +86,31 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_Continue_pressed():
 	$AnimationPlayer.play("hide_pause")
+
+func has_player():
+	return player_alive
+	
+func get_player():
+	return player
+	
+func disable_asteroids(disable):
+	if disable:
+		$AsteroidSpawner/Timer.stop()
+		$EnemySpawner/E1.stop()
+		$EnemySpawner/E2.stop()
+	else:
+		$AsteroidSpawner/Timer.start()
+		$EnemySpawner/E1.start()
+		$EnemySpawner/E2.start()
+		
+func start_boss(b):
+	disable_asteroids(true)
+	boss = b
+	boss_health.max_value = boss.max_health
+	boss_health.value = boss.health
+	boss_health.visible = true
+
+func end_boss():
+	disable_asteroids(false)
+	boss = null
+	boss_health.visible = false

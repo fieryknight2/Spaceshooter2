@@ -12,7 +12,7 @@ func _process(delta):
 	position += Vector2(0,move_speed * delta).rotated(rotation)
 	
 	# make sure projectile is still in view
-	if position.y > get_viewport().size.y + 50:
+	if position.y > get_viewport().size.y + 50 or position.y < 0:
 		queue_free()
 
 

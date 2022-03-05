@@ -145,8 +145,13 @@ func _on_Spaceship_area_entered(area):
 		health -= h
 	if area.is_in_group("enemies"):
 		var h = area.health
-		area.die()
-		health -= h
+		if health > h:
+			area.die()
+			health -= h
+		else:
+			area.health -= h
+			die()
+			
 
 
 func _on_Reload_timeout():
