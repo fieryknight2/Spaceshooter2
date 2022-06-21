@@ -1,34 +1,35 @@
 extends Area2D
 
-
-export (Array, Texture) var asteroids
+export (Array, PackedScene) var asteroids
 export (PackedScene) var asteroid_chunk
 export (PackedScene) var explosion
 var speed
 var size
 var health : float
 var mhealth : float
+var rspeed
 
 var rg = RandomNumberGenerator.new()
 
 func _ready():
 	rg.randomize()
 	
-	# all we need to do here is set the size
-	# note that all the variables are set by the parent asteroid
-	scale.x = size * 0.5
-	scale.y = size * 0.5
-	
 	# set a random image for this asteroid
 	var image = rg.randi_range(0, asteroids.size() - 1)
-	var sprite = get_child(0)
-	sprite.texture = asteroids[image]
+	add_child(asteroids[image].instance())
+	
+	# all we need to do here is set the size
+	scale.x = size * 0.2
+	scale.y = size * 0.2
 	
 	mhealth = health
 
 func _process(delta):
 	# move the asteroid down
 	position.y += speed * delta * get_tree().current_scene.speed_scale
+	# rotate the asteroid
+	$Collider.rotation_degrees += rspeed * delta
+	$cracks.rotation = $Collider.rotation
 	
 	if health <= 0:
 		die()
@@ -39,9 +40,8 @@ func die():
 	var e = explosion.instance()
 	e.scale = scale / 2
 	e.position = position
+	e.volume = -22
 	get_tree().current_scene.add_child(e)
-	
-	# player gets points here
 	
 	# create 2 asteroid chunks
 	for _i in range(2):

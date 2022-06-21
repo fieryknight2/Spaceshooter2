@@ -31,6 +31,7 @@ var mode
 func _ready():
 	get_tree().paused = false
 	$AnimationPlayer.play("enter")
+	$MusicOff.play("Start Music")
 	
 	Globals.process_scores()
 	for score in Globals.high_scores:
@@ -41,8 +42,13 @@ func _ready():
 		
 		scores.add_child(c)
 
+func _process(_delta):
+	if $Music.playing == false:
+		$Music.play()
+
 func _on_Play_pressed():
 	$AnimationPlayer.play("exit")
+	$MusicOff.play("Kill Music")
 	mode = "play"
 
 func _on_Ships_pressed():
@@ -126,3 +132,7 @@ func _on_S3_pressed():
 func _on_Back_Highscores_pressed():
 	$AnimationPlayer.play("Hide Scores")
 
+
+
+func _on_Music_finished():
+	$Music.play()

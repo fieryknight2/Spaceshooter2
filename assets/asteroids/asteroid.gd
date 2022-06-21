@@ -1,6 +1,6 @@
 extends Area2D
 
-export (Array, Texture) var asteroids
+export (Array, PackedScene) var asteroids
 export (float) var max_speed
 export (float) var min_speed
 export (float) var max_size
@@ -25,8 +25,8 @@ func _ready():
 	
 	# set a random image for this asteroid
 	var image = rg.randi_range(0, asteroids.size() - 1)
-	var sprite = get_child(0)
-	sprite.texture = asteroids[image]
+	add_child(asteroids[image].instance())
+	
 	
 	# random speed
 	speed = rg.randf_range(min_speed, max_speed)
@@ -57,16 +57,16 @@ func _process(delta):
 	# move the asteroid:
 	position.y += speed * delta * get_tree().current_scene.speed_scale
 	# rotate the asteroid:
-	rotation_degrees += rspeed * delta
+	$Collider.rotation_degrees += rspeed * delta
+	$cracks.rotation = $Collider.rotation
 	
 func die():
 	# boom
 	var e = explosion.instance()
 	e.scale = scale
 	e.position = position
+	e.volume = -15
 	get_tree().current_scene.add_child(e)
-	
-	# player gets points here
 	
 	# size/max_size = 0.size_value(extra)
 	# 0.size_value(extra) * 10 = size_value.(extra)
@@ -81,9 +81,13 @@ func die():
 								  rg.randf_range(position.y-60, position.y+60))
 			# bigger the asteroid, bigger the size
 			ba.size = size_value - 7
-			ba.speed = speed * 1.5
+			ba.speed = speed * 2.5
 			# set the baby health, this is subject to tweaking
 			ba.health =  health_value / 4
+			
+			# set the baby to roll fast
+			ba.rspeed = rspeed * 2
+			
 			# add asteroid to scene
 			get_tree().current_scene.call_deferred("add_child", ba)
 	# create extra asteroid chunks (1 chunk for every 2 size values)

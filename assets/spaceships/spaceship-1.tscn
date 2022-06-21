@@ -92,16 +92,16 @@ scale_amount = 0.35
 polygon = PoolVector2Array( 7, -30.8, 13, -20.8, 13, -2, 13.7, 6.1, 17, 4.3, 17, -2, 23.8, -11.5, 28, -10.2, 28, -8, 32, -2.2, 32, 21.5, 31.2, 24, 27.7, 24, 13.2, 32, -13.5, 32, -32, 22.3, -32, 0, -26.9, -11, -21.7, -11, -17.6, 3.3, -14, 5.2, -14, -2.1, -12.8, -23, -10.8, -23, -7, -30.7, -7, -32, 7, -32 )
 
 [node name="FP1" type="Position2D" parent="."]
-position = Vector2( -24, 3 )
+position = Vector2( -24, -33 )
 
 [node name="FP2" type="Position2D" parent="."]
-position = Vector2( 24, 3 )
+position = Vector2( 24, -33 )
 
 [node name="FP3" type="Position2D" parent="."]
-position = Vector2( 20, 9 )
+position = Vector2( 20, -27 )
 
 [node name="FP4" type="Position2D" parent="."]
-position = Vector2( -20, 9 )
+position = Vector2( -20, -27 )
 
 [node name="Reload" type="Timer" parent="."]
 

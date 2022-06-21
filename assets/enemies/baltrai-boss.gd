@@ -24,7 +24,7 @@ var c_mlaser = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health *= get_tree().current_scene.speed_scale * 2
+	health = clamp(health * get_tree().current_scene.health_speed_up, health, health*50)
 	$T.start(turret_wait)
 	$L1.start(l1laser_wait)
 	$L5.start(l5laser_wait)
@@ -54,13 +54,14 @@ func die():
 	e.position = position
 	e.scale.x = 2
 	e.scale.y = 2
+	e.volume = -10
 	get_tree().current_scene.add_child(e)
 	
 	get_tree().current_scene.score += 5000 * get_tree().current_scene.speed_scale * \
 									 get_tree().current_scene.score_mod
 	
-	# test this line:
-	get_tree().current_scene.speed_scale += 0.1
+	# test this line:s
+	get_tree().current_scene.speed_scale += 0.05
 	
 	queue_free()
 

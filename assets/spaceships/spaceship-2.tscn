@@ -89,10 +89,10 @@ initial_velocity = 150.0
 scale_amount = 0.35
 
 [node name="FP1" type="Position2D" parent="."]
-position = Vector2( -21, -3 )
+position = Vector2( -22, -42 )
 
 [node name="FP2" type="Position2D" parent="."]
-position = Vector2( 19, -3 )
+position = Vector2( 18, -42 )
 
 [node name="Reload" type="Timer" parent="."]
 

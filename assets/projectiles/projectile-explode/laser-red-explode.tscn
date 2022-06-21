@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/projectiles/projectile-explode/laser-red-explode.png" type="Texture" id=1]
 [ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
+[ext_resource path="res://assets/sounds/laser-splash-1.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -36,10 +38,19 @@ animations = [ {
 "speed": 20.0
 } ]
 
-[node name="explode" type="AnimatedSprite"]
+[node name="Node2D" type="Node2D"]
+
+[node name="explode" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -23 )
 rotation = 3.14159
 frames = SubResource( 6 )
 animation = "explosion"
 script = ExtResource( 2 )
 
-[connection signal="animation_finished" from="." to="." method="_on_explode_animation_finished"]
+[node name="Effects" type="AudioStreamPlayer2D" parent="explode"]
+stream = ExtResource( 4 )
+volume_db = -30.0
+script = ExtResource( 3 )
+
+[connection signal="animation_finished" from="explode" to="explode" method="_on_explode_animation_finished"]
+[connection signal="finished" from="explode/Effects" to="explode/Effects" method="_on_Effects_finished"]

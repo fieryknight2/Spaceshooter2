@@ -16,6 +16,7 @@ var max_health
 var direction = 0
 
 func _ready():
+	health = clamp(health * get_tree().current_scene.health_speed_up, health, health*50)
 	$Fire.start(reload_time)
 	max_health = health
 	$Health.max_value = max_health
@@ -59,6 +60,7 @@ func die():
 	# boom
 	var e = explosion.instance()
 	e.position = position
+	e.volume = -20
 	get_tree().current_scene.add_child(e)
 	
 	get_tree().current_scene.score += 500 * get_tree().current_scene.speed_scale * get_tree().current_scene.score_mod

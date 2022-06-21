@@ -72,22 +72,22 @@ func _process(delta):
 	# make sure we aren't trying to hit a wall
 	# X: left side
 	if position.x < wall_boundaries*2 and velocity.x < 0:
-		velocity.x += deceleration * delta
+		velocity.x += action_speed * delta / 2
 		velocity.x = clamp(velocity.x, -max_velocity, 0)
 	
 	# X: right side
 	if position.x > get_viewport().size.x - wall_boundaries*2 and velocity.x > 0:
-		velocity.x -= deceleration * delta
+		velocity.x -= action_speed * delta / 2
 		velocity.x = clamp(velocity.x, 0, max_velocity)
 	
 	# Y: bottom side
 	if position.y > get_viewport().size.y - wall_boundaries*2 and velocity.y > 0:
-		velocity.y -= deceleration * delta
+		velocity.y -= action_speed * delta / 2
 		velocity.y = clamp(velocity.y, 0, max_velocity)
 	
 	# Y: top_side
 	if position.y < get_viewport().size.y / 2 + wall_boundaries*2 and velocity.y < 0:
-		velocity.y += deceleration * delta
+		velocity.y += action_speed * delta / 2
 		velocity.y = clamp(velocity.y, -max_velocity, 0)
 	
 	# move position by velocity
@@ -133,7 +133,9 @@ func die():
 	var e = explosion.instance()
 	e.scale = scale
 	e.position = position
+	e.volume = -10
 	get_tree().current_scene.add_child(e)
+		
 	get_tree().current_scene.player_die()
 	
 	queue_free()

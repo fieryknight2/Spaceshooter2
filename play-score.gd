@@ -3,8 +3,10 @@ extends Node2D
 export (Array, PackedScene) var spaceships
 var score = 0
 export (float) var speed_up
+export (float) var health_speed_up
 var score_mod = 1
 var speed_scale = 1
+var health_scale = 1
 export (NodePath) var text_name_path
 export (NodePath) var text_name_2_path
 export (NodePath) var boss_health_path
@@ -27,6 +29,7 @@ func _ready():
 	text_name.text = Globals.prev_name
 	text_name_2.text = Globals.prev_name
 
+# warning-ignore:unused_argument
 func _process(delta):
 	score = int(score)
 	$UI/Score.text = String(score)
@@ -34,6 +37,8 @@ func _process(delta):
 		$UI/High.visible = true
 	
 	speed_scale += delta * speed_up
+	
+	health_scale += delta * health_speed_up
 	
 	if Input.is_action_just_pressed("pause") and player_alive:
 		get_tree().paused = true

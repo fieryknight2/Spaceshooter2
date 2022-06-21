@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/laser-splash-1.mp3-ee5f9703c024a4886b04e7a7419c3e91.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/mp3/laser-splash-1.mp3"
+dest_files=[ "res://.import/laser-splash-1.mp3-ee5f9703c024a4886b04e7a7419c3e91.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -17,6 +17,7 @@ var rg = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = clamp(health * get_tree().current_scene.health_speed_up, health, health*50)
 	rg.randomize()
 	$Fire.start(reload_time)
 	max_health = health
@@ -58,14 +59,15 @@ func die():
 	# boom
 	var e = explosion.instance()
 	e.position = position
+	e.volume = -22
 	get_tree().current_scene.add_child(e)
 	
 	get_tree().current_scene.score += 250 * get_tree().current_scene.speed_scale * get_tree().current_scene.score_mod
 	
 	queue_free()
 	
-func deal_damage(damage):
-	health -= damage
+func deal_damage(dmg):
+	health -= dmg
 
 func _on_Fire_timeout():
 	$Fire.start(reload_time / get_tree().current_scene.speed_scale)

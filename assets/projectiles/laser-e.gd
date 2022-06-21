@@ -7,6 +7,13 @@ export (PackedScene) var explosion
 
 var damage
 
+func _ready():
+	var effects = $Effects
+	effects.play()
+	remove_child(effects)
+	get_tree().current_scene.add_child(effects)
+	effects.position = global_position
+	
 func _process(delta):
 	# move projectile down
 	position += Vector2(0,move_speed * delta).rotated(rotation)
@@ -24,6 +31,7 @@ func _on_laser_area_entered(area):
 		# explode
 		var e = explosion.instance()
 		e.position = position
+		e.get_child(0).volume = -25
 		get_tree().current_scene.add_child(e)
 		
 		queue_free()
