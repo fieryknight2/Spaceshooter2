@@ -12,6 +12,7 @@ func _ready():
 	effects.play()
 	remove_child(effects)
 	get_tree().current_scene.add_child(effects)
+	effects.position = global_position
 
 
 func _on_explosion_animation_finished():
