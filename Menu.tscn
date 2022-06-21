@@ -910,8 +910,8 @@ anchor_top = 0.145
 anchor_right = -0.295
 anchor_bottom = 0.395
 margin_left = 34.5
-margin_right = 1774.5
-margin_bottom = 2800.0
+margin_right = 1910.4
+margin_bottom = 3000.0
 __meta__ = {
 "_edit_group_": true
 }
