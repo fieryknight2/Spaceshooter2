@@ -25,7 +25,7 @@ func _ready():
 	
 	# set a random image for this asteroid
 	var image = rg.randi_range(0, asteroids.size() - 1)
-	add_child(asteroids[image].instance())
+	add_child_below_node($cracks, asteroids[image].instance())
 	
 	
 	# random speed

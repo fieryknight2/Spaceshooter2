@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/asteroids/Asteroid-3.tscn" type="PackedScene" id=10]
 
 [node name="BabyAsteroid" type="Area2D" groups=["asteroids"]]
-z_index = 3
 script = ExtResource( 2 )
 asteroids = [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
 asteroid_chunk = ExtResource( 5 )
@@ -17,7 +16,5 @@ explosion = ExtResource( 6 )
 
 [node name="cracks" type="Sprite" parent="."]
 scale = Vector2( 0.4, 0.4 )
-z_index = 1
-z_as_relative = false
 texture = ExtResource( 7 )
 hframes = 6

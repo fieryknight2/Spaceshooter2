@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=1]
 [ext_resource path="res://assets/projectiles/projectile-explode/laser-blue-explode.png" type="Texture" id=2]
 [ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/laser-splash-1.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -70,7 +69,6 @@ animation = "explosion"
 script = ExtResource( 1 )
 
 [node name="Effects" type="AudioStreamPlayer2D" parent="explode"]
-stream = ExtResource( 4 )
 volume_db = -30.0
 script = ExtResource( 3 )
 
