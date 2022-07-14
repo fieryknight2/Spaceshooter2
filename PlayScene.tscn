@@ -518,7 +518,7 @@ script = ExtResource( 9 )
 enemy = ExtResource( 10 )
 enemy2 = ExtResource( 16 )
 boss1 = ExtResource( 17 )
-boss1_score = 10000
+boss1_time = 250
 increase_score_by = 50000
 
 [node name="E1" type="Timer" parent="EnemySpawner"]
@@ -526,6 +526,8 @@ wait_time = 15.0
 autostart = true
 
 [node name="E2" type="Timer" parent="EnemySpawner"]
+
+[node name="Boss" type="Timer" parent="EnemySpawner"]
 
 [node name="PlanetSpawner" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -779,6 +781,7 @@ anims/show_pause = SubResource( 12 )
 [connection signal="timeout" from="AsteroidSpawner/Timer" to="AsteroidSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/E1" to="EnemySpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/E2" to="EnemySpawner" method="_on_E2_timeout"]
+[connection signal="timeout" from="EnemySpawner/Boss" to="EnemySpawner" method="_on_Boss_timeout"]
 [connection signal="timeout" from="PlanetSpawner/Timer" to="PlanetSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="StarSpawner/Timer" to="StarSpawner" method="_on_Timer_timeout"]
 [connection signal="pressed" from="UI/Panel/container/Restart" to="." method="_on_Restart_pressed"]
