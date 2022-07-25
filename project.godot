@@ -22,7 +22,7 @@ Globals="*res://globals.gd"
 
 [display]
 
-window/size/width=450
+window/size/width=550
 window/size/height=800
 window/size/resizable=false
 

@@ -46,7 +46,12 @@ func _process(delta):
 	
 	if boss != null:
 		boss_health.value = boss.health
+			
 
+func play():
+	if player_alive and $AnimationPlayer.is_playing() == false:
+		$AnimationPlayer.play("hide_pause")
+	
 func player_die():
 	player_alive = false
 	$AnimationPlayer.play("player_dead")
