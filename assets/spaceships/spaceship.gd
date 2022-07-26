@@ -14,11 +14,15 @@ export (float) var wall_boundaries
 export (PackedScene) var explosion
 export (PackedScene) var projectile
 export (Array, NodePath) var fire_points
+export (float) var max_energy
+export (float) var energy_reload
+export (float) var shot_energy
 
 var velocity = Vector2()
 var can_fire = true
 var health
 var th
+var energy
 
 func _ready():
 	# set spaceship position
@@ -28,6 +32,7 @@ func _ready():
 	$Health.max_value = max_health
 	health = max_health
 	th = health
+	energy = max_energy
 
 func _process(delta):
 	# get input movement
@@ -105,10 +110,13 @@ func _process(delta):
 		$Reload.start(reload_time / get_tree().current_scene.speed_scale)
 		
 		for p in fire_points:
+			if energy < shot_energy:
+				continue
 			var e = projectile.instance()
 			e.position = get_node(p).position + position
 			e.rotation = get_node(p).rotation
 			e.damage = damage
+			energy -= shot_energy
 			get_tree().current_scene.add_child(e)
 	
 	if th > health:
@@ -119,13 +127,19 @@ func _process(delta):
 	if (health <= 0):
 		die()
 	else:
+		if energy > health_reload * delta:
+			if health != max_health:
+				energy -= health_reload * delta
+				health += health_reload * delta
+				$Health.value = health
+				$Health.show()
+			else:
+				$Health.hide()
 		health = clamp(health, 0, max_health)
-		if health != max_health:
-			health += health_reload * delta
-			$Health.value = health
-			$Health.show()
-		else:
-			$Health.hide()
+	
+	if energy < max_energy:
+		energy += energy_reload * delta
+		energy = clamp(energy, 0, max_energy)
 
 func die():
 	Input.start_joy_vibration(0, 1, 1, 1)

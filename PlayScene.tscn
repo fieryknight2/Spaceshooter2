@@ -116,6 +116,10 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id=18]
 bg_color = Color( 0, 0.384314, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -790,7 +794,7 @@ margin_right = 444.0
 margin_bottom = 16.0
 
 [node name="Health" type="ProgressBar" parent="UI/HUD/Bars"]
-margin_right = 390.0
+margin_right = 193.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -799,13 +803,12 @@ custom_styles/bg = SubResource( 20 )
 percent_visible = false
 
 [node name="Space" type="Control" parent="UI/HUD/Bars"]
-margin_left = 394.0
-margin_right = 444.0
+margin_left = 197.0
+margin_right = 247.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="Energy" type="ProgressBar" parent="UI/HUD/Bars"]
-visible = false
 margin_left = 251.0
 margin_right = 444.0
 margin_bottom = 16.0

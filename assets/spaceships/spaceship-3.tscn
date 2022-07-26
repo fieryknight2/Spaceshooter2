@@ -41,6 +41,9 @@ wall_boundaries = 30.0
 explosion = ExtResource( 6 )
 projectile = ExtResource( 7 )
 fire_points = [ NodePath("FP1") ]
+max_energy = 150.0
+energy_reload = 60.0
+shot_energy = 40.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )

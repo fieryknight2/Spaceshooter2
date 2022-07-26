@@ -906,13 +906,13 @@ custom_fonts/font = SubResource( 3 )
 text = "Space Shooter 2D"
 
 [node name="Buttons" type="Control" parent="."]
-anchor_left = -0.597
-anchor_top = 0.145
-anchor_right = -0.295
+anchor_left = -1.491
+anchor_top = 0.395
+anchor_right = -1.491
 anchor_bottom = 0.395
 margin_left = 34.5
-margin_right = 828.5
-margin_bottom = 1095.0
+margin_right = 964.4
+margin_bottom = 1295.0
 __meta__ = {
 "_edit_group_": true
 }

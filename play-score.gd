@@ -29,10 +29,12 @@ func _ready():
 	text_name.text = Globals.prev_name
 	text_name_2.text = Globals.prev_name
 	
-	$UI/HUD/Bars/Health.max_value = ss.max_health
+	$UI/HUD/Bars/Health.max_value = player.max_health
 	$UI/HUD/Bars/Health.value = player.health
 	
-	# $UI/HUD/Bars/Energy.max_value = ss.max_energy
+	$UI/HUD/Bars/Energy.max_value = player.max_energy
+	$UI/HUD/Bars/Energy.value = player.energy
+	
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -41,7 +43,9 @@ func _process(delta):
 	if len(Globals.high_scores) and score > Globals.high_scores[0]["score"]:
 		$UI/HUD/Score/High.visible = true
 	
-	$UI/HUD/Bars/Health.value = player.health
+	if is_instance_valid(player):
+		$UI/HUD/Bars/Health.value = player.health
+		$UI/HUD/Bars/Energy.value = player.energy
 	
 	speed_scale += delta * speed_up
 	
