@@ -32,7 +32,7 @@ move_speed = 10.0
 action_speed = 20.0
 max_velocity = 40.0
 deceleration = 80.0
-reload_time = 0.9
+reload_time = 0.7
 damage = 12
 max_health = 75
 health_reload = 0.75
@@ -43,7 +43,7 @@ projectile = ExtResource( 7 )
 fire_points = [ NodePath("FP1") ]
 max_energy = 150.0
 energy_reload = 60.0
-shot_energy = 40.0
+shot_energy = 60.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )

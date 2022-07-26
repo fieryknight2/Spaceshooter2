@@ -32,6 +32,7 @@ func _enter_tree():
 func _exit_tree():
 	var x = File.new()
 	x.open("user://data.save", File.WRITE)
+	x.store_line(String(c_version))
 	x.store_line(to_json(high_scores))
 	x.store_line(String(ship))
 	x.store_line(prev_name)

@@ -107,7 +107,8 @@ func _process(delta):
 	# fire bullets
 	if Input.is_action_pressed("fire") and can_fire:
 		can_fire = false
-		$Reload.start(reload_time / get_tree().current_scene.speed_scale)
+		if energy > shot_energy:
+			$Reload.start(reload_time / get_tree().current_scene.speed_scale)
 		
 		for p in fire_points:
 			if energy < shot_energy:
