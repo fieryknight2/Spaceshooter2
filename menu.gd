@@ -29,6 +29,7 @@ var cship = Globals.ship
 var mode
 
 func _ready():
+	$Buttons.rect_position = Vector2(-1000, -1000)
 	get_tree().paused = false
 	$AnimationPlayer.play("enter")
 	$MusicOff.play("Start Music")
