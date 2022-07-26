@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/asteroids/asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -82,16 +82,6 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="DynamicFont" id=14]
-size = 25
-font_data = ExtResource( 11 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 75
-outline_size = 1
-outline_color = Color( 1, 0, 0, 1 )
-font_data = ExtResource( 11 )
-
 [sub_resource type="StyleBoxFlat" id=15]
 bg_color = Color( 1, 0, 0, 1 )
 corner_radius_top_left = 2
@@ -110,10 +100,52 @@ corner_radius_bottom_left = 2
 ProgressBar/styles/bg = SubResource( 15 )
 ProgressBar/styles/fg = SubResource( 16 )
 
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.0901961, 1, 0, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 0, 0, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0, 0.384314, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.219608, 0.219608, 0.219608, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="DynamicFont" id=1]
+size = 75
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
+font_data = ExtResource( 11 )
+
 [sub_resource type="Animation" id=17]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("UI/Score:rect_position")
+tracks/0/path = NodePath("UI/HUD/Score/Score:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -125,7 +157,7 @@ tracks/0/keys = {
 "values": [ Vector2( 5, 4 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/Score:rect_scale")
+tracks/1/path = NodePath("UI/HUD/Score/Score:rect_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -149,7 +181,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("UI/Score:modulate")
+tracks/3/path = NodePath("UI/HUD/Score/Score:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -237,7 +269,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/Score:modulate")
+tracks/1/path = NodePath("UI/HUD/Score/Score:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -288,7 +320,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("UI/Score:rect_position")
+tracks/3/path = NodePath("UI/HUD/Score/Score:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -300,7 +332,7 @@ tracks/3/keys = {
 "values": [ Vector2( 42, 222 ), Vector2( 5, 4 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("UI/Score:rect_scale")
+tracks/4/path = NodePath("UI/HUD/Score/Score:rect_scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -338,7 +370,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
-tracks/0/path = NodePath("UI/Score:rect_position")
+tracks/0/path = NodePath("UI/HUD/Score/Score:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -350,7 +382,7 @@ tracks/0/keys = {
 "values": [ Vector2( 5, 4 ), Vector2( 60, 240 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/Score:rect_scale")
+tracks/1/path = NodePath("UI/HUD/Score/Score:rect_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -425,7 +457,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/Score:rect_position")
+tracks/1/path = NodePath("UI/HUD/Score/Score:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -437,7 +469,7 @@ tracks/1/keys = {
 "values": [ Vector2( 5, 4 ), Vector2( 42, 222 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("UI/Score:rect_scale")
+tracks/2/path = NodePath("UI/HUD/Score/Score:rect_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -574,9 +606,6 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="space" type="Control" parent="UI/Panel/container"]
 margin_right = 340.0
@@ -732,31 +761,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="High" type="Label" parent="UI"]
-visible = false
-margin_left = 295.0
-margin_top = 6.0
-margin_right = 444.0
-margin_bottom = 34.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 14 )
-text = "New Highscore!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Label" parent="UI"]
-margin_left = 5.0
-margin_top = 4.0
-margin_right = 287.0
-margin_bottom = 86.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Boss" type="ProgressBar" parent="UI"]
 visible = false
 margin_left = 31.0
@@ -774,6 +778,75 @@ __meta__ = {
 position = Vector2( -15, 8 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 18 )
+
+[node name="HUD" type="VBoxContainer" parent="UI"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 447.0
+margin_bottom = 103.0
+
+[node name="Bars" type="HBoxContainer" parent="UI/HUD"]
+margin_right = 444.0
+margin_bottom = 16.0
+
+[node name="Health" type="ProgressBar" parent="UI/HUD/Bars"]
+margin_right = 390.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 19 )
+custom_styles/bg = SubResource( 20 )
+percent_visible = false
+
+[node name="Space" type="Control" parent="UI/HUD/Bars"]
+margin_left = 394.0
+margin_right = 444.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Energy" type="ProgressBar" parent="UI/HUD/Bars"]
+visible = false
+margin_left = 251.0
+margin_right = 444.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+custom_styles/fg = SubResource( 18 )
+custom_styles/bg = SubResource( 21 )
+percent_visible = false
+
+[node name="Score" type="HBoxContainer" parent="UI/HUD"]
+margin_top = 20.0
+margin_right = 444.0
+margin_bottom = 102.0
+
+[node name="Score" type="Label" parent="UI/HUD/Score"]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 86.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Control" type="Control" parent="UI/HUD/Score"]
+margin_left = 39.0
+margin_right = 444.0
+margin_bottom = 82.0
+size_flags_horizontal = 3
+
+[node name="High" type="Label" parent="UI/HUD/Score"]
+visible = false
+margin_left = 295.0
+margin_top = 27.0
+margin_right = 444.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "New Highscore!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 pause_mode = 2
