@@ -10,3 +10,6 @@ script = ExtResource( 1 )
 move_speed = 10.0
 max_scale = 0.3
 min_scale = 0.1
+max_yellow = Color( 1, 0.937255, 0.533333, 1 )
+max_green = Color( 0.545098, 1, 0.639216, 1 )
+base_color = Color( 1, 1, 1, 1 )
