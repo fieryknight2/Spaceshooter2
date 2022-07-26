@@ -12,11 +12,8 @@ font_data = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="name" type="Label" parent="."]
+[node name="ship" type="Label" parent="."]
 margin_top = 386.0
 margin_right = 347.0
 margin_bottom = 414.0

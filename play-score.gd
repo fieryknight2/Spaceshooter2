@@ -18,6 +18,7 @@ var player_alive = true
 var player = null
 var rom = false
 var boss = null
+var ship_names = ["Swallow", "Swift", "Falcon"]
 
 func _ready():
 	get_tree().paused = false
@@ -25,9 +26,6 @@ func _ready():
 	score_mod = ss.score_modifier
 	add_child(ss)
 	player = ss
-	
-	text_name.text = Globals.prev_name
-	text_name_2.text = Globals.prev_name
 	
 	$UI/HUD/Bars/Health.max_value = player.max_health
 	$UI/HUD/Bars/Health.value = player.health
@@ -74,9 +72,8 @@ func _on_Restart_pressed():
 	rom = true
 	$AnimationPlayer.play("finish")
 	
-	Globals.prev_name = text_name.text
 	if score > 0:
-		Globals.high_scores.append({"name": text_name.text, "score": score})
+		Globals.high_scores.append({"ship": ship_names[Globals.ship], "score": score})
 	Globals.process_scores()
 
 
@@ -84,9 +81,8 @@ func _on_Menu_pressed():
 	rom = false
 	$AnimationPlayer.play("finish")
 	
-	Globals.prev_name = text_name.text
 	if score > 0:
-		Globals.high_scores.append({"name": text_name.text, "score": score})
+		Globals.high_scores.append({"ship": ship_names[Globals.ship], "score": score})
 	Globals.process_scores()
 
 

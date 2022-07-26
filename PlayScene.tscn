@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/asteroids/asteroid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -31,20 +31,6 @@ corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
-
-[sub_resource type="DynamicFont" id=11]
-size = 43
-extra_spacing_top = 3
-font_data = ExtResource( 11 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0, 0, 0, 0.196078 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 1, 1, 1, 1 )
-expand_margin_top = 7.0
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.231373, 0.231373, 0.231373, 1 )
@@ -539,8 +525,6 @@ script = ExtResource( 12 )
 spaceships = [ ExtResource( 8 ), ExtResource( 13 ), ExtResource( 15 ) ]
 speed_up = 0.003
 health_speed_up = 0.001
-text_name_path = NodePath("UI/Panel/container/TextEdit")
-text_name_2_path = NodePath("UI/Pause/container/TextEdit")
 boss_health_path = NodePath("UI/Boss")
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
@@ -613,30 +597,15 @@ margin_bottom = -5.0
 
 [node name="space" type="Control" parent="UI/Panel/container"]
 margin_right = 340.0
-margin_bottom = 227.0
-size_flags_vertical = 3
-
-[node name="TextEdit" type="LineEdit" parent="UI/Panel/container"]
-margin_top = 231.0
-margin_right = 340.0
 margin_bottom = 285.0
-focus_neighbour_top = NodePath("../Menu")
-focus_neighbour_bottom = NodePath("../Restart")
-focus_next = NodePath("../Restart")
-focus_previous = NodePath("../Menu")
-custom_fonts/font = SubResource( 11 )
-custom_styles/normal = SubResource( 10 )
-align = 1
-placeholder_text = "Enter a name here"
+size_flags_vertical = 3
 
 [node name="Restart" type="Button" parent="UI/Panel/container"]
 margin_top = 289.0
 margin_right = 340.0
 margin_bottom = 345.0
-focus_neighbour_top = NodePath("../TextEdit")
 focus_neighbour_bottom = NodePath("../Menu")
 focus_next = NodePath("../Menu")
-focus_previous = NodePath("../TextEdit")
 custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 7 )
@@ -652,8 +621,6 @@ margin_top = 349.0
 margin_right = 340.0
 margin_bottom = 405.0
 focus_neighbour_top = NodePath("../Restart")
-focus_neighbour_bottom = NodePath("../TextEdit")
-focus_next = NodePath("../TextEdit")
 focus_previous = NodePath("../Restart")
 custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )
@@ -699,26 +666,12 @@ margin_right = 340.0
 margin_bottom = 179.0
 size_flags_vertical = 3
 
-[node name="TextEdit" type="LineEdit" parent="UI/Pause/container"]
-margin_top = 183.0
-margin_right = 340.0
-margin_bottom = 234.0
-focus_neighbour_top = NodePath("../Menu")
-focus_neighbour_bottom = NodePath("../Restart")
-focus_next = NodePath("../Restart")
-focus_previous = NodePath("../Menu")
-custom_fonts/font = SubResource( 11 )
-custom_styles/normal = SubResource( 10 )
-placeholder_text = "Enter a name here"
-
 [node name="Continue" type="Button" parent="UI/Pause/container"]
 margin_top = 238.0
 margin_right = 340.0
 margin_bottom = 291.0
-focus_neighbour_top = NodePath("../TextEdit")
 focus_neighbour_bottom = NodePath("../Restart")
 focus_next = NodePath("../Restart")
-focus_previous = NodePath("../TextEdit")
 custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 7 )
@@ -752,8 +705,6 @@ margin_top = 352.0
 margin_right = 340.0
 margin_bottom = 405.0
 focus_neighbour_top = NodePath("../Restart")
-focus_neighbour_bottom = NodePath("../TextEdit")
-focus_next = NodePath("../TextEdit")
 focus_previous = NodePath("../Restart")
 custom_fonts/font = ExtResource( 14 )
 custom_styles/hover = SubResource( 5 )

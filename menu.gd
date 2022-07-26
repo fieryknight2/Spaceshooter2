@@ -37,7 +37,7 @@ func _ready():
 	for score in Globals.high_scores:
 		var c = score_p.instance()
 		
-		c.highscore_name = score["name"]
+		c.highscore_ship = score["ship"]
 		c.highscore_score = score["score"]
 		
 		scores.add_child(c)

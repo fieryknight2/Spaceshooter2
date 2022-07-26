@@ -8,7 +8,7 @@ func _enter_tree():
 	var x = File.new()
 	if not x.file_exists("user://data.save"):
 		return
-		
+	
 	x.open("user://data.save", File.READ)
 	high_scores = parse_json(x.get_line())
 	ship = int(x.get_line())
