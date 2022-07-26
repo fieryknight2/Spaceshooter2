@@ -10,8 +10,6 @@ var health_scale = 1
 export (NodePath) var text_name_path
 export (NodePath) var text_name_2_path
 export (NodePath) var boss_health_path
-onready var text_name = get_node(text_name_path)
-onready var text_name_2 = get_node(text_name_2_path)
 onready var boss_health = get_node(boss_health_path)
 
 var player_alive = true

@@ -7,6 +7,7 @@ export (float) var min_scale
 var ms
 
 func _ready():
+	
 	# set to a random speed
 	scale.x = rand_range(min_scale, max_scale)
 	scale.y = scale.x
