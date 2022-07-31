@@ -30,6 +30,11 @@ window/size/resizable=false
 
 enabled=PoolStringArray(  )
 
+[importer_defaults]
+
+image={
+}
+
 [input]
 
 up={
