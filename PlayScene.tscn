@@ -57,13 +57,21 @@ ProgressBar/styles/fg = SubResource( 16 )
 
 [sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0.0901961, 1, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id=20]
-bg_color = Color( 1, 0, 0, 1 )
+bg_color = Color( 1, 0, 0, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -495,6 +503,11 @@ spaceships = [ ExtResource( 8 ), ExtResource( 13 ), ExtResource( 15 ) ]
 speed_up = 0.003
 health_speed_up = 0.001
 boss_health_path = NodePath("UI/Boss")
+max_health_color = Color( 0.12549, 1, 0, 1 )
+no_health_color = Color( 1, 0, 0, 1 )
+max_energy_color = Color( 0, 0.670588, 1, 1 )
+no_energy_color = Color( 0.0588235, 0, 0.345098, 1 )
+animation_speed = 8.0
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 pause_mode = 1
@@ -511,7 +524,7 @@ script = ExtResource( 9 )
 enemy = ExtResource( 10 )
 enemy2 = ExtResource( 16 )
 boss1 = ExtResource( 17 )
-boss1_time = 250
+boss1_time = 200
 increase_score_by = 50000
 
 [node name="E1" type="Timer" parent="EnemySpawner"]
@@ -719,12 +732,14 @@ margin_right = 444.0
 margin_bottom = 16.0
 
 [node name="Health" type="ProgressBar" parent="UI/HUD/Bars"]
+unique_name_in_owner = true
 margin_right = 193.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 19 )
 custom_styles/bg = SubResource( 20 )
+value = 50.0
 percent_visible = false
 
 [node name="Space" type="Control" parent="UI/HUD/Bars"]
@@ -734,6 +749,7 @@ margin_bottom = 16.0
 rect_min_size = Vector2( 50, 0 )
 
 [node name="Energy" type="ProgressBar" parent="UI/HUD/Bars"]
+unique_name_in_owner = true
 margin_left = 251.0
 margin_right = 444.0
 margin_bottom = 16.0
@@ -741,6 +757,7 @@ rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 18 )
 custom_styles/bg = SubResource( 21 )
+value = 50.0
 percent_visible = false
 
 [node name="Score" type="HBoxContainer" parent="UI/HUD"]

@@ -42,6 +42,7 @@ func _ready():
 		c.highscore_score = score["score"]
 		
 		scores.add_child(c)
+	print("Hello World")
 
 func _process(_delta):
 	if $Music.playing == false:

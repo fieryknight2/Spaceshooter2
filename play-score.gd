@@ -12,11 +12,24 @@ export (NodePath) var text_name_2_path
 export (NodePath) var boss_health_path
 onready var boss_health = get_node(boss_health_path)
 
+export (Color) var max_health_color
+export (Color) var no_health_color
+export (Color) var max_energy_color
+export (Color) var no_energy_color
+
+export (float) var animation_speed
+
 var player_alive = true
 var player = null
 var rom = false
 var boss = null
 var ship_names = ["Swallow", "Swift", "Falcon"]
+var e_health_value
+var e_energy_value
+var die_once = false
+
+onready var Health : ProgressBar = get_node("%Health")
+onready var Energy : ProgressBar = get_node("%Energy")
 
 func _ready():
 	get_tree().paused = false
@@ -25,14 +38,15 @@ func _ready():
 	add_child(ss)
 	player = ss
 	
-	$UI/HUD/Bars/Health.max_value = player.max_health
-	$UI/HUD/Bars/Health.value = player.health
+	Health.max_value = player.max_health
+	Health.value = player.health
+	e_health_value = Health.value 
 	
-	$UI/HUD/Bars/Energy.max_value = player.max_energy
-	$UI/HUD/Bars/Energy.value = player.energy
+	Energy.max_value = player.max_energy
+	Energy.value = player.energy
+	e_energy_value = Energy.value
 	
-
-# warning-ignore:unused_argument
+	
 func _process(delta):
 	score = int(score)
 	$UI/HUD/Score/Score.text = String(score)
@@ -40,8 +54,35 @@ func _process(delta):
 		$UI/HUD/Score/High.visible = true
 	
 	if is_instance_valid(player):
-		$UI/HUD/Bars/Health.value = player.health
-		$UI/HUD/Bars/Energy.value = player.energy
+		if e_health_value != player.health:
+			var t = 1
+			if e_health_value < player.health: t = 2
+			var duration = animation_speed / t / abs(e_health_value - player.health / Health.max_value) 
+			e_health_value = player.health
+			t = create_tween().set_ease(Tween.EASE_IN).tween_property(Health, 
+									"value", e_health_value, duration)
+		
+		if e_energy_value != player.energy:
+			var t = 1
+			if e_energy_value < player.energy: t = 2
+			var duration = animation_speed / t / abs(e_energy_value - player.energy / Energy.max_value)
+			e_energy_value = player.energy
+			t = create_tween().set_ease(Tween.EASE_IN).tween_property(Energy,
+									"value", e_energy_value, duration)
+		
+
+		Energy.get("custom_styles/fg").bg_color = no_energy_color.linear_interpolate( 
+								max_energy_color, Energy.value / Energy.max_value)
+		Health.get("custom_styles/fg").bg_color = no_health_color.linear_interpolate(
+								max_health_color, Health.value / Health.max_value)
+	elif !die_once:
+		create_tween().kill()
+		die_once = true
+		var t = 5
+		var h_duration = animation_speed / t / (e_health_value / Health.max_value) 
+		var e_duration = animation_speed / t / (e_energy_value / Energy.max_value)
+		t = create_tween().tween_property(Health, "value", 0.0, h_duration)
+		t = create_tween().tween_property(Energy, "value", 0.0, e_duration)
 	
 	speed_scale += delta * speed_up
 	
