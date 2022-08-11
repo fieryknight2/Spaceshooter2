@@ -30,6 +30,11 @@ window/size/resizable=false
 
 enabled=PoolStringArray(  )
 
+[global]
+
+focu=false
+enable=false
+
 [importer_defaults]
 
 image={

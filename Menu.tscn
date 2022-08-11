@@ -51,7 +51,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id=24]
-bg_color = Color( 0.152941, 0.152941, 0.152941, 1 )
+bg_color = Color( 0.227451, 0.227451, 0.227451, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -967,9 +967,6 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 disabled = true
 text = "Ships"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Highscores" type="Button" parent="Buttons"]
 margin_top = 373.0

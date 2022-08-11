@@ -219,6 +219,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("UI/Panel:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "finish"
@@ -246,6 +258,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -504,6 +528,7 @@ speed_up = 0.003
 health_speed_up = 0.001
 boss_health_path = NodePath("UI/Boss")
 max_health_color = Color( 0.12549, 1, 0, 1 )
+middle_health_color = Color( 1, 0.960784, 0, 1 )
 no_health_color = Color( 1, 0, 0, 1 )
 max_energy_color = Color( 0, 0.670588, 1, 1 )
 no_energy_color = Color( 0.0588235, 0, 0.345098, 1 )
@@ -558,6 +583,7 @@ pause_mode = 1
 z_index = 150
 
 [node name="Panel" type="Panel" parent="UI"]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
