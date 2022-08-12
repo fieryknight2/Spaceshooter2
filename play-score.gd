@@ -18,6 +18,8 @@ export (Color) var no_health_color
 export (Color) var max_energy_color
 export (Color) var no_energy_color
 
+export (Array, float) var difficulties
+
 export (float) var animation_speed
 
 var player_alive = true
@@ -47,6 +49,8 @@ func _ready():
 	Energy.value = player.energy
 	e_energy_value = Energy.value
 	
+	speed_scale = difficulties[Globals.difficulty - 1]
+	
 	
 func _process(delta):
 	score = int(score)
@@ -60,24 +64,32 @@ func _process(delta):
 			if e_health_value < player.health: t = 2
 			var duration = animation_speed / t / abs(e_health_value - player.health / Health.max_value) 
 			e_health_value = player.health
-			t = create_tween().set_ease(Tween.EASE_IN).tween_property(Health, 
-									"value", e_health_value, duration)
+			# $HealthTween.stop()
+			$HealthTween.interpolate_property(Health, "value", null, e_health_value, 
+								duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$HealthTween.start()
 		
 		if e_energy_value != player.energy:
 			var t = 1
 			if e_energy_value < player.energy: t = 2
 			var duration = animation_speed / t / abs(e_energy_value - player.energy / Energy.max_value)
 			e_energy_value = player.energy
-			t = create_tween().set_ease(Tween.EASE_IN).tween_property(Energy,
-									"value", e_energy_value, duration)
+			$EnergyTween.interpolate_property(Energy, "value", null, e_energy_value,
+								duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
+			$EnergyTween.start()
 	elif !die_once:
-		create_tween().kill()
 		die_once = true
 		var t = 5
 		var h_duration = animation_speed / t / (e_health_value / Health.max_value) 
 		var e_duration = animation_speed / t / (e_energy_value / Energy.max_value)
-		t = create_tween().tween_property(Health, "value", 0.0, h_duration)
-		t = create_tween().tween_property(Energy, "value", 0.0, e_duration)
+		$HealthTween.stop_all()
+		$HealthTween.interpolate_property(Health, "value", null, 0.0, 
+								abs(h_duration), Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$EnergyTween.interpolate_property(Energy, "value", null, 0.0, 
+								abs(e_duration), Tween.TRANS_LINEAR, Tween.EASE_IN)
+		
+		$HealthTween.start()
+		$EnergyTween.start()
 		
 
 	Energy.get("custom_styles/fg").bg_color = no_energy_color.linear_interpolate( 
@@ -93,8 +105,7 @@ func _process(delta):
 												/ (Health.max_value - (Health.max_value / 2)))
 	
 	
-	speed_scale += delta * speed_up
-	
+	# speed_scale += delta * speed_up
 	health_scale += delta * health_speed_up
 	
 	if Input.is_action_just_pressed("pause") and player_alive:

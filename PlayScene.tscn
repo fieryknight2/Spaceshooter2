@@ -532,6 +532,7 @@ middle_health_color = Color( 1, 0.960784, 0, 1 )
 no_health_color = Color( 1, 0, 0, 1 )
 max_energy_color = Color( 0, 0.670588, 1, 1 )
 no_energy_color = Color( 0.0588235, 0, 0.345098, 1 )
+difficulties = [ 1.0, 1.5, 2.0, 4.0 ]
 animation_speed = 8.0
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
@@ -827,6 +828,10 @@ anims/finish = SubResource( 9 )
 anims/hide_pause = SubResource( 13 )
 anims/player_dead = SubResource( 8 )
 anims/show_pause = SubResource( 12 )
+
+[node name="EnergyTween" type="Tween" parent="."]
+
+[node name="HealthTween" type="Tween" parent="."]
 
 [connection signal="timeout" from="AsteroidSpawner/Timer" to="AsteroidSpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="EnemySpawner/E1" to="EnemySpawner" method="_on_Timer_timeout"]

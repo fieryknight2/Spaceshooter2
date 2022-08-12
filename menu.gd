@@ -27,6 +27,8 @@ var ship_data = [
 var speed_scale = 1
 var cship = Globals.ship
 var mode
+var difficulty = 0
+var level = 0
 
 func _ready():
 	$Buttons.rect_position = Vector2(-1000, -1000)
@@ -49,9 +51,9 @@ func _process(_delta):
 		$Music.play()
 
 func _on_Play_pressed():
-	$AnimationPlayer.play("exit")
-	$MusicOff.play("Kill Music")
-	mode = "play"
+	#$AnimationPlayer.play("exit")
+	#mode = "choose_level"
+	pass
 
 func _on_Ships_pressed():
 	$AnimationPlayer.play("exit")
@@ -67,16 +69,18 @@ func _on_Highscores_pressed():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "exit":
-		if mode == "play":
-# warning-ignore:return_value_discarded
-			get_tree().change_scene_to(play_scene)
+		if mode == "choose_difficulty":
+			$AnimationPlayer.play("Show Difficulties")
+		if mode == "choose_level":
+			#$AnimationPlayer.play("Show Levels 1")
+			pass
 		if mode == "ships":
 			# Star equipped ship
 			$AnimationPlayer.play("show_ships")
 		if mode == "scores":
 			$AnimationPlayer.play("Show Scores")
 	if anim_name == "enter":
-		$Buttons/Play.grab_focus()
+		$Buttons/EndlessPlay.grab_focus()
 	if anim_name == "hide_ships":
 		if mode == "menu":
 			$AnimationPlayer.play("enter")
@@ -93,6 +97,17 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("enter")
 	if anim_name == "Show Scores":
 		$HighScores/Container/Back.grab_focus()
+	if anim_name == "Show Difficulties":
+		$Difficulties/VBox/Easy.grab_focus()
+	if anim_name == "Hide Difficulties":
+		if mode == "endless":
+			$MusicOff.play("Kill Music")
+			Globals.difficulty = difficulty
+			Globals.endless_play = true
+# warning-ignore:return_value_discarded
+			get_tree().change_scene_to(play_scene)
+		else:
+			$AnimationPlayer.play("enter")
 
 func _on_Back_pressed():
 	$AnimationPlayer.play("hide_ships")
@@ -138,3 +153,38 @@ func _on_Back_Highscores_pressed():
 
 func _on_Music_finished():
 	$Music.play()
+
+
+func _on_EndlessPlay_pressed():
+	$AnimationPlayer.play("exit")
+	$MusicOff.play("Kill Music")
+	mode = "choose_difficulty"
+
+
+func _on_Easy_pressed():
+	$AnimationPlayer.play("Hide Difficulties")
+	mode = "endless"
+	difficulty = 1
+
+
+func _on_Medium_pressed():
+	$AnimationPlayer.play("Hide Difficulties")
+	mode = "endless"
+	difficulty = 2
+
+
+func _on_Hard_pressed():
+	$AnimationPlayer.play("Hide Difficulties")
+	mode = "endless"
+	difficulty = 3
+
+
+func _on_Impossible_pressed():
+	$AnimationPlayer.play("Hide Difficulties")
+	mode = "endless"
+	difficulty = 4
+
+
+func _on_Difficulties_Back_pressed():
+	$AnimationPlayer.play("Hide Difficulties")
+	mode = "menu"

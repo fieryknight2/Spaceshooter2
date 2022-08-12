@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://assets/Star.tscn" type="PackedScene" id=1]
 [ext_resource path="res://spawners/StarSpawner.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/theme/Hover.tres" type="StyleBox" id=13]
 [ext_resource path="res://assets/theme/Pressed.tres" type="StyleBox" id=14]
 [ext_resource path="res://assets/theme/Focus.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/font/ButtonText.tres" type="DynamicFont" id=16]
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
@@ -111,6 +112,82 @@ expand_margin_right = 4.0
 expand_margin_top = 4.0
 expand_margin_bottom = 4.0
 
+[sub_resource type="Animation" id=26]
+resource_name = "Hide Difficulties"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Difficulties:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Difficulties:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Difficulties/VBox/Easy:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Difficulties/VBox/Medium:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Difficulties/VBox/Hard:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Difficulties/VBox/Impossible:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [sub_resource type="Animation" id=19]
 resource_name = "Hide Scores"
 length = 0.5
@@ -151,10 +228,10 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=27]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Buttons:rect_position")
+tracks/0/path = NodePath("Difficulties/VBox/Easy:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -163,234 +240,82 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 34.5, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Buttons/Ships:rect_position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 309 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Buttons/Highscores:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 373 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Buttons/Quit:rect_position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 437 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Play:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ true ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("Buttons/Ships:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Buttons/Highscores:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("Buttons/Quit:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Play:rect_position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 245 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("Ships:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("Ships:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("ShipOverview:visible")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("ShipOverview:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("ShipOverview/VManage/Buttons/Back:disabled")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("ShipOverview/VManage/Buttons/Equip:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("Buttons:visible")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
+
+[sub_resource type="Animation" id=25]
+resource_name = "Show Difficulties"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Difficulties:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
-tracks/16/type = "value"
-tracks/16/path = NodePath("Ships/Back:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+tracks/1/type = "value"
+tracks/1/path = NodePath("Difficulties:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Difficulties/VBox/Impossible:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
 "values": [ false ]
 }
-tracks/17/type = "value"
-tracks/17/path = NodePath("HighScores:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0 ),
+tracks/3/type = "value"
+tracks/3/path = NodePath("Difficulties/VBox/Hard:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"update": 1,
+"values": [ false ]
 }
-tracks/18/type = "value"
-tracks/18/path = NodePath("HighScores/Container/Back:disabled")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"times": PoolRealArray( 0 ),
+tracks/4/type = "value"
+tracks/4/path = NodePath("Difficulties/VBox/Medium:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
+"update": 1,
+"values": [ false ]
 }
-tracks/19/type = "value"
-tracks/19/path = NodePath("HighScores:visible")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
-"times": PoolRealArray( 0 ),
+tracks/5/type = "value"
+tracks/5/path = NodePath("Difficulties/VBox/Easy:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ false ]
 }
 
@@ -444,10 +369,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.75 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -500, 0 ), Vector2( 34.5, 0 ) ]
+"values": [ Vector2( -500, 50 ), Vector2( 34.5, 50 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Buttons/Ships:rect_position")
@@ -456,10 +381,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.85 ),
+"times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -50, 309 ), Vector2( 0, 309 ) ]
+"values": [ Vector2( -100, 309 ), Vector2( 0, 309 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Buttons/Highscores:rect_position")
@@ -468,10 +393,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.9 ),
+"times": PoolRealArray( 0, 0.85 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -100, 373 ), Vector2( 0, 373 ) ]
+"values": [ Vector2( -150, 373 ), Vector2( 0, 373 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Buttons/Quit:rect_position")
@@ -480,13 +405,13 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -150, 437 ), Vector2( 0, 437 ) ]
+"values": [ Vector2( -200, 437 ), Vector2( 0, 437 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Play:disabled")
+tracks/4/path = NodePath("Buttons/LevelsPlay:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -534,16 +459,40 @@ tracks/7/keys = {
 "values": [ true, false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Play:rect_position")
+tracks/8/path = NodePath("Buttons/LevelsPlay:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.95 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 245 ) ]
+"values": [ Vector2( -50, 245 ), Vector2( 0, 245 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Buttons/EndlessPlay:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 181 ), Vector2( 0, 181 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Buttons/EndlessPlay:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -559,7 +508,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 34.5, 0 ), Vector2( -500, 0 ) ]
+"values": [ Vector2( 34.5, 50 ), Vector2( -500, 50 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Buttons/Ships:rect_position")
@@ -598,7 +547,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 437 ), Vector2( 0, 437 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Buttons/Play:disabled")
+tracks/4/path = NodePath("Buttons/LevelsPlay:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -646,7 +595,7 @@ tracks/7/keys = {
 "values": [ true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Buttons/Play:rect_position")
+tracks/8/path = NodePath("Buttons/LevelsPlay:rect_position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -656,6 +605,30 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 245 ), Vector2( -150, 245 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Buttons/EndlessPlay:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 181 ), Vector2( -200, 181 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Buttons/EndlessPlay:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=16]
@@ -927,16 +900,36 @@ anchor_left = -1.491
 anchor_top = 0.395
 anchor_right = -1.491
 anchor_bottom = 0.395
-margin_left = 34.5
-margin_right = 346.5
-margin_bottom = 772.0
+margin_left = 170.95
+margin_top = -266.0
+margin_right = 482.95
+margin_bottom = 506.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Play" type="Button" parent="Buttons"]
+[node name="EndlessPlay" type="Button" parent="Buttons"]
+margin_left = -200.0
+margin_top = 181.0
+margin_right = 100.0
+margin_bottom = 237.0
+focus_neighbour_top = NodePath("../Quit")
+focus_neighbour_bottom = NodePath("../Ships")
+focus_next = NodePath("../Ships")
+focus_previous = NodePath("../Quit")
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+disabled = true
+text = "Endless Play"
+
+[node name="LevelsPlay" type="Button" parent="Buttons"]
+margin_left = -150.0
 margin_top = 245.0
-margin_right = 300.0
+margin_right = 150.0
 margin_bottom = 301.0
 focus_neighbour_top = NodePath("../Quit")
 focus_neighbour_bottom = NodePath("../Ships")
@@ -949,16 +942,17 @@ custom_styles/focus = SubResource( 24 )
 custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 disabled = true
-text = "Play"
+text = "Levels"
 
 [node name="Ships" type="Button" parent="Buttons"]
+margin_left = -100.0
 margin_top = 309.0
-margin_right = 300.0
+margin_right = 200.0
 margin_bottom = 365.0
-focus_neighbour_top = NodePath("../Play")
+focus_neighbour_top = NodePath("../LevelsPlay")
 focus_neighbour_bottom = NodePath("../Highscores")
 focus_next = NodePath("../Highscores")
-focus_previous = NodePath("../Play")
+focus_previous = NodePath("../LevelsPlay")
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 4 )
@@ -969,8 +963,9 @@ disabled = true
 text = "Ships"
 
 [node name="Highscores" type="Button" parent="Buttons"]
+margin_left = -50.0
 margin_top = 373.0
-margin_right = 300.0
+margin_right = 250.0
 margin_bottom = 429.0
 focus_neighbour_top = NodePath("../Ships")
 focus_previous = NodePath("../Ships")
@@ -990,8 +985,8 @@ __meta__ = {
 margin_top = 437.0
 margin_right = 300.0
 margin_bottom = 493.0
-focus_neighbour_bottom = NodePath("../Play")
-focus_next = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../LevelsPlay")
+focus_next = NodePath("../LevelsPlay")
 custom_fonts/font = SubResource( 1 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 4 )
@@ -1000,9 +995,6 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 disabled = true
 text = "Quit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Ships" type="VBoxContainer" parent="."]
 visible = false
@@ -1016,6 +1008,7 @@ margin_top = -6.0
 margin_right = 155.0
 margin_bottom = 6.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1085,6 +1078,7 @@ margin_right = 153.5
 margin_bottom = 152.0
 custom_styles/panel = SubResource( 10 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1194,6 +1188,7 @@ margin_right = 168.5
 margin_bottom = 303.5
 custom_styles/panel = SubResource( 17 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -1229,10 +1224,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Difficulties" type="Control" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Difficulties"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -134.0
+margin_right = 128.0
+margin_bottom = 134.0
+custom_constants/separation = 10
+
+[node name="Easy" type="Button" parent="Difficulties/VBox"]
+margin_right = 256.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 256, 64 )
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+disabled = true
+text = "Easy"
+
+[node name="Medium" type="Button" parent="Difficulties/VBox"]
+margin_top = 74.0
+margin_right = 256.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 256, 64 )
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+disabled = true
+text = "Medium"
+
+[node name="Hard" type="Button" parent="Difficulties/VBox"]
+margin_top = 148.0
+margin_right = 256.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 256, 64 )
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+disabled = true
+text = "Hard"
+
+[node name="Impossible" type="Button" parent="Difficulties/VBox"]
+margin_top = 222.0
+margin_right = 256.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 256, 64 )
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+disabled = true
+text = "Impossible"
+
+[node name="Back" type="Button" parent="Difficulties"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -175.0
+margin_top = 200.0
+margin_right = 175.0
+margin_bottom = 261.0
+custom_fonts/font = ExtResource( 16 )
+custom_styles/hover = ExtResource( 13 )
+custom_styles/pressed = ExtResource( 14 )
+custom_styles/focus = ExtResource( 15 )
+custom_styles/disabled = ExtResource( 12 )
+custom_styles/normal = ExtResource( 11 )
+text = "Back"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
+"anims/Hide Difficulties" = SubResource( 26 )
 "anims/Hide Scores" = SubResource( 19 )
-anims/RESET = SubResource( 6 )
+anims/RESET = SubResource( 27 )
+"anims/Show Difficulties" = SubResource( 25 )
 "anims/Show Scores" = SubResource( 18 )
 anims/enter = SubResource( 7 )
 anims/exit = SubResource( 8 )
@@ -1260,7 +1346,8 @@ anims/RESET = SubResource( 22 )
 "anims/Start Music" = SubResource( 23 )
 
 [connection signal="timeout" from="StarSpawner/Timer" to="StarSpawner" method="_on_Timer_timeout"]
-[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Buttons/EndlessPlay" to="." method="_on_EndlessPlay_pressed"]
+[connection signal="pressed" from="Buttons/LevelsPlay" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Buttons/Ships" to="." method="_on_Ships_pressed"]
 [connection signal="pressed" from="Buttons/Highscores" to="." method="_on_Highscores_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
@@ -1271,5 +1358,10 @@ anims/RESET = SubResource( 22 )
 [connection signal="pressed" from="ShipOverview/VManage/Buttons/Back" to="." method="_on_Back_Overview_pressed"]
 [connection signal="pressed" from="ShipOverview/VManage/Buttons/Equip" to="." method="_on_Equip_pressed"]
 [connection signal="pressed" from="HighScores/Container/Back" to="." method="_on_Back_Highscores_pressed"]
+[connection signal="pressed" from="Difficulties/VBox/Easy" to="." method="_on_Easy_pressed"]
+[connection signal="pressed" from="Difficulties/VBox/Medium" to="." method="_on_Medium_pressed"]
+[connection signal="pressed" from="Difficulties/VBox/Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="Difficulties/VBox/Impossible" to="." method="_on_Impossible_pressed"]
+[connection signal="pressed" from="Difficulties/Back" to="." method="_on_Difficulties_Back_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="finished" from="Music" to="." method="_on_Music_finished"]

@@ -130,8 +130,8 @@ func _process(delta):
 	else:
 		if energy > health_reload * delta:
 			if health != max_health:
-				energy -= health_reload * delta
-				health += health_reload * delta
+				energy -= health_reload * delta * get_tree().current_scene.speed_scale
+				health += health_reload * delta * get_tree().current_scene.speed_scale
 				$Health.value = health
 				$Health.show()
 			else:
@@ -139,7 +139,7 @@ func _process(delta):
 		health = clamp(health, 0, max_health)
 	
 	if energy < max_energy:
-		energy += energy_reload * delta
+		energy += energy_reload * delta * get_tree().current_scene.speed_scale
 		energy = clamp(energy, 0, max_energy)
 
 func die():

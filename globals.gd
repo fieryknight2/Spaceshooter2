@@ -6,6 +6,8 @@ var prev_name = ""
 
 var c_version = 0.4
 var last_break = 0.39
+var endless_play = false
+var difficulty = 0
 
 func _enter_tree():
 	var x = File.new()
