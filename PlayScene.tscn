@@ -766,7 +766,9 @@ rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 19 )
 custom_styles/bg = SubResource( 20 )
-value = 50.0
+value = 100.0
+allow_greater = true
+allow_lesser = true
 percent_visible = false
 
 [node name="Space" type="Control" parent="UI/HUD/Bars"]
@@ -784,7 +786,9 @@ rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 18 )
 custom_styles/bg = SubResource( 21 )
-value = 50.0
+value = 100.0
+allow_greater = true
+allow_lesser = true
 percent_visible = false
 
 [node name="Score" type="HBoxContainer" parent="UI/HUD"]

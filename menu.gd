@@ -157,7 +157,6 @@ func _on_Music_finished():
 
 func _on_EndlessPlay_pressed():
 	$AnimationPlayer.play("exit")
-	$MusicOff.play("Kill Music")
 	mode = "choose_difficulty"
 
 
