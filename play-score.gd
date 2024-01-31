@@ -29,10 +29,18 @@ var boss = null
 var ship_names = ["Swallow", "Swift", "Falcon"]
 var e_health_value
 var e_energy_value
+var max_energy_value
+var max_health_value
 var die_once = false
+
+var healthTween : Tween
+var energyTween : Tween
 
 @onready var Health : ProgressBar = get_node("%Health")
 @onready var Energy : ProgressBar = get_node("%Energy")
+
+var e_stylebox_fill : StyleBoxFlat
+var h_stylebox_fill : StyleBoxFlat
 
 func _ready():
 	get_tree().paused = false
@@ -43,13 +51,42 @@ func _ready():
 	
 	Health.max_value = player.max_health
 	Health.value = player.health
+	max_health_value = player.max_health
 	e_health_value = Health.value 
 	
 	Energy.max_value = player.max_energy
 	Energy.value = player.energy
+	max_energy_value = player.max_energy
 	e_energy_value = Energy.value
 	
 	speed_scale = difficulties[Globals.difficulty - 1]
+	
+	healthTween = get_tree().create_tween()
+	energyTween = get_tree().create_tween()
+	
+	energyTween.set_ease(Tween.EASE_IN)
+	energyTween.set_trans(Tween.TRANS_LINEAR)
+	
+	healthTween.set_ease(Tween.EASE_IN)
+	healthTween.set_trans(Tween.TRANS_LINEAR)
+	
+	e_stylebox_fill = StyleBoxFlat.new()
+	h_stylebox_fill = StyleBoxFlat.new()
+	
+	e_stylebox_fill.corner_radius_bottom_left = 7
+	e_stylebox_fill.corner_radius_top_left = 7
+	h_stylebox_fill.corner_radius_top_right = 7
+	h_stylebox_fill.corner_radius_bottom_right = 7
+	e_stylebox_fill.set_border_width_all(1)
+	h_stylebox_fill.set_border_width_all(1)
+	e_stylebox_fill.border_color = Color(255,255,255)
+	h_stylebox_fill.border_color = Color(255,255,255)
+	
+	e_stylebox_fill.bg_color = max_energy_color
+	h_stylebox_fill.bg_color = max_health_color
+	
+	Energy.add_theme_stylebox_override("fill", e_stylebox_fill)
+	Health.add_theme_stylebox_override("fill", h_stylebox_fill)
 	
 	
 func _process(delta):
@@ -64,45 +101,57 @@ func _process(delta):
 			if e_health_value < player.health: t = 2
 			var duration = animation_speed / t / abs(e_health_value - player.health / Health.max_value) 
 			e_health_value = player.health
-			# $HealthTween.stop()
-			$HealthTween.interpolate_property(Health, "value", null, e_health_value, 
-								duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
-			$HealthTween.start()
+			
+			if healthTween:
+				healthTween.kill()
+			healthTween = get_tree().create_tween()
+			healthTween.tween_property(Health, "value", e_health_value, duration *
+										(e_health_value/max_health_value))
+			
 		
 		if e_energy_value != player.energy:
 			var t = 1
 			if e_energy_value < player.energy: t = 2
 			var duration = animation_speed / t / abs(e_energy_value - player.energy / Energy.max_value)
 			e_energy_value = player.energy
-			$EnergyTween.interpolate_property(Energy, "value", null, e_energy_value,
-								duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
-			$EnergyTween.start()
+			
+			if energyTween:
+				energyTween.kill()
+			energyTween = get_tree().create_tween()
+			energyTween.tween_property(Energy, "value", e_energy_value,duration * 
+										(e_energy_value/max_energy_value))
+			energyTween.play()
+			
 	elif !die_once:
 		die_once = true
 		var t = 5
-		var h_duration = animation_speed / t / (e_health_value / Health.max_value) 
-		var e_duration = animation_speed / t / (e_energy_value / Energy.max_value)
-		$HealthTween.stop_all()
-		$HealthTween.interpolate_property(Health, "value", null, 0.0, 
-								abs(h_duration), Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$EnergyTween.interpolate_property(Energy, "value", null, 0.0, 
-								abs(e_duration), Tween.TRANS_LINEAR, Tween.EASE_IN)
+		var h_duration = animation_speed / t / (e_health_value / max_health_value) 
+		var e_duration = animation_speed / t / (e_energy_value / max_energy_value)
 		
-		$HealthTween.start()
-		$EnergyTween.start()
+		if healthTween:
+			healthTween.kill()
+		healthTween = get_tree().create_tween()
+		healthTween.tween_property(Health, "value", 0.0, abs(h_duration))
+		healthTween.play()
 		
-
-	Energy.get("theme_override_styles/fg").bg_color = no_energy_color.lerp( 
+		if energyTween:
+			energyTween.kill()
+		energyTween = get_tree().create_tween()
+		energyTween.tween_property(Energy, "value", 0.0, abs(e_duration))
+		energyTween.play()
+		
+	e_stylebox_fill.bg_color = no_energy_color.lerp( 
 							max_energy_color, Energy.value / Energy.max_value)
 			
-	if Health.value / Health.max_value > 0.5:
-		Health.get("theme_override_styles/fg").bg_color = middle_health_color.lerp(
-							max_health_color, (Health.value - (Health.max_value / 2)) / 
-													(Health.max_value - (Health.max_value / 2)))
+	if (Health.value / Health.max_value) > 0.5:
+		var color = middle_health_color.lerp(max_health_color, (Health.value - 
+											(Health.max_value / 2)) / 
+											(Health.max_value - (Health.max_value / 2)))
+		h_stylebox_fill.bg_color = color
 	else:
-		Health.get("theme_override_styles/fg").bg_color = no_health_color.lerp(
-							middle_health_color, Health.value 
-												/ (Health.max_value - (Health.max_value / 2)))
+		var color = no_health_color.lerp(middle_health_color, Health.value 
+										/ (Health.max_value - (Health.max_value / 2)))
+		h_stylebox_fill.bg_color = color
 	
 	
 	# speed_scale += delta * speed_up

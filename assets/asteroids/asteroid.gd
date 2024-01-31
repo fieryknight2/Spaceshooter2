@@ -83,7 +83,7 @@ func die():
 			ba.size = size_value - 7
 			ba.speed = speed * 2.5
 			# set the baby health, this is subject to tweaking
-			ba.health =  health_value / 4
+			ba.health =  health_value / 4.0
 			
 			# set the baby to roll fast
 			ba.rspeed = rspeed * 2
@@ -91,7 +91,7 @@ func die():
 			# add asteroid to scene
 			get_tree().current_scene.call_deferred("add_child", ba)
 	# create extra asteroid chunks (1 chunk for every 2 size values)
-	for _i in range(int(size_value / 2)):
+	for _i in range(int(size_value / 2.0)):
 		var ac = asteroid_chunk.instantiate()
 		# move to a random location near the asteroid
 		ac.position = Vector2(rg.randf_range(position.x-20, position.x+20), 

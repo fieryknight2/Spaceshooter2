@@ -1,34 +1,36 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://cswajmypdb1sg"]
 
-[ext_resource path="res://assets/enemies/fillen-fighter.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/enemies/fillen-fighter.gd" type="Script" id=2]
-[ext_resource path="res://assets/explosions/explosion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/projectiles/laser-red.tscn" type="PackedScene" id=4]
+[ext_resource type="Texture2D" uid="uid://bujodis3oga03" path="res://assets/enemies/fillen-fighter.png" id="1"]
+[ext_resource type="Script" path="res://assets/enemies/fillen-fighter.gd" id="2"]
+[ext_resource type="PackedScene" path="res://assets/explosions/explosion.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://assets/projectiles/laser-red.tscn" id="4"]
+[ext_resource type="StyleBox" uid="uid://cm8jqkhmll2ux" path="res://assets/enemies/health_bar_bg.tres" id="5_oqo47"]
+[ext_resource type="StyleBox" uid="uid://ceaqdhuwq0u2e" path="res://assets/enemies/health_bar_fg.tres" id="6_fhkq1"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 36.4966
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 0, 0, 1 )
+[sub_resource type="StyleBoxFlat" id="4"]
+bg_color = Color(1, 0, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 1, 0, 1 )
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0, 1, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="Theme" id=3]
-ProgressBar/styles/bg = SubResource( 4 )
-ProgressBar/styles/fg = SubResource( 2 )
+[sub_resource type="Theme" id="3"]
+ProgressBar/styles/bg = SubResource("4")
+ProgressBar/styles/fg = SubResource("2")
 
 [node name="Fighter" type="Area2D" groups=["enemies"]]
 z_index = 75
-script = ExtResource( 2 )
+script = ExtResource("2")
 movement_speed = 10.0
 slow_speed = 1.0
 vel_length = 50.0
@@ -37,42 +39,41 @@ border = 10
 health = 50
 reload_time = 4.0
 damage = 5
-explosion = ExtResource( 3 )
-projectile = ExtResource( 4 )
-fire_points = [ NodePath("P1"), NodePath("P2"), NodePath("P3"), NodePath("P4") ]
+explosion = ExtResource("3")
+projectile = ExtResource("4")
+fire_points = Array[NodePath]([NodePath("P1"), NodePath("P2"), NodePath("P3"), NodePath("P4")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
-shape = SubResource( 1 )
+position = Vector2(0, -16)
+shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 3.14159
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="P1" type="Marker2D" parent="."]
-position = Vector2( 19, -1 )
+position = Vector2(19, -1)
 
 [node name="P2" type="Marker2D" parent="."]
-position = Vector2( 8, 4 )
+position = Vector2(8, 4)
 
 [node name="P3" type="Marker2D" parent="."]
-position = Vector2( -9, 4 )
+position = Vector2(-9, 4)
 
 [node name="P4" type="Marker2D" parent="."]
-position = Vector2( -19, -3 )
+position = Vector2(-19, -3)
 
 [node name="Fire" type="Timer" parent="."]
 
 [node name="Health" type="ProgressBar" parent="."]
 offset_left = -41.0
-offset_top = -23.0
+offset_top = -29.0
 offset_right = 39.0
-offset_bottom = -21.0
-theme = SubResource( 3 )
+offset_bottom = -19.0
+theme = SubResource("3")
+theme_override_styles/background = ExtResource("5_oqo47")
+theme_override_styles/fill = ExtResource("6_fhkq1")
 value = 50.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+show_percentage = false
 
 [connection signal="timeout" from="Fire" to="." method="_on_Fire_timeout"]

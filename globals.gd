@@ -34,9 +34,9 @@ func _enter_tree():
 	
 func _exit_tree():
 	var x = FileAccess.open("user://data.save", FileAccess.WRITE)
-	x.store_line(String(c_version))
-	x.store_line(JSON.new().stringify(high_scores))
-	x.store_line(String(ship))
+	x.store_line(str(c_version))
+	x.store_line(JSON.stringify(high_scores))
+	x.store_line(str(ship))
 	x.store_line(prev_name)
 
 func process_scores():
