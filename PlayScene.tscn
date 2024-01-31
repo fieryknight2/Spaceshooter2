@@ -10,14 +10,14 @@
 [ext_resource path="res://assets/spaceships/spaceship-1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://spawners/EnemySpawner.gd" type="Script" id=9]
 [ext_resource path="res://assets/enemies/fillen-fighter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" type="DynamicFontData" id=11]
+[ext_resource path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" type="FontFile" id=11]
 [ext_resource path="res://play-score.gd" type="Script" id=12]
 [ext_resource path="res://assets/spaceships/spaceship-2.tscn" type="PackedScene" id=13]
-[ext_resource path="res://assets/font/ButtonText.tres" type="DynamicFont" id=14]
+[ext_resource path="res://assets/font/ButtonText.tres" type="FontFile" id=14]
 [ext_resource path="res://assets/spaceships/spaceship-3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/enemies/speed-fighter.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/enemies/baltrai-boss.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/enemies/boss-1.png" type="Texture" id=18]
+[ext_resource path="res://assets/enemies/boss-1.png" type="Texture2D" id=18]
 [ext_resource path="res://assets/Pause.gd" type="Script" id=19]
 [ext_resource path="res://assets/theme/Pressed.tres" type="StyleBox" id=20]
 [ext_resource path="res://assets/theme/Normal.tres" type="StyleBox" id=21]
@@ -99,39 +99,39 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 75
 outline_size = 1
 outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 11 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="FontFile" id=14]
 size = 25
 font_data = ExtResource( 11 )
 
 [sub_resource type="Animation" id=17]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("UI/HUD/Score/Score:rect_position")
+tracks/0/path = NodePath("UI/HUD/Score/Score:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 5, 4 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/HUD/Score/Score:rect_scale")
+tracks/1/path = NodePath("UI/HUD/Score/Score:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -142,8 +142,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -154,8 +154,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -166,8 +166,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ true ]
 }
@@ -178,8 +178,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -190,8 +190,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -202,8 +202,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -214,8 +214,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -226,8 +226,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ false ]
 }
@@ -242,8 +242,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -254,8 +254,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -266,8 +266,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -281,8 +281,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -293,8 +293,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -305,32 +305,32 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("UI/HUD/Score/Score:rect_position")
+tracks/3/path = NodePath("UI/HUD/Score/Score:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 42, 222 ), Vector2( 5, 4 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("UI/HUD/Score/Score:rect_scale")
+tracks/4/path = NodePath("UI/HUD/Score/Score:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
@@ -341,8 +341,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -353,34 +353,34 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
-tracks/0/path = NodePath("UI/HUD/Score/Score:rect_position")
+tracks/0/path = NodePath("UI/HUD/Score/Score:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 5, 4 ), Vector2( 60, 240 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/HUD/Score/Score:rect_scale")
+tracks/1/path = NodePath("UI/HUD/Score/Score:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
 }
@@ -391,8 +391,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -403,8 +403,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -415,8 +415,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -427,8 +427,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -442,32 +442,32 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("UI/HUD/Score/Score:rect_position")
+tracks/1/path = NodePath("UI/HUD/Score/Score:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 5, 4 ), Vector2( 42, 222 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("UI/HUD/Score/Score:rect_scale")
+tracks/2/path = NodePath("UI/HUD/Score/Score:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
 }
@@ -478,8 +478,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -490,8 +490,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -502,8 +502,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -514,14 +514,14 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
 [node name="PlayScene" type="Node2D"]
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 12 )
 spaceships = [ ExtResource( 8 ), ExtResource( 13 ), ExtResource( 15 ) ]
 speed_up = 0.003
@@ -536,7 +536,7 @@ difficulties = [ 1.0, 1.5, 2.0, 4.0 ]
 animation_speed = 8.0
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 4 )
 asteroid = ExtResource( 1 )
 
@@ -545,7 +545,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 9 )
 enemy = ExtResource( 10 )
 enemy2 = ExtResource( 16 )
@@ -562,7 +562,7 @@ autostart = true
 [node name="Boss" type="Timer" parent="EnemySpawner"]
 
 [node name="PlanetSpawner" type="Node2D" parent="."]
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 5 )
 planets = [ ExtResource( 6 ), ExtResource( 7 ) ]
 
@@ -570,7 +570,7 @@ planets = [ ExtResource( 6 ), ExtResource( 7 ) ]
 wait_time = 60.0
 
 [node name="StarSpawner" type="Node2D" parent="."]
-pause_mode = 1
+process_mode = 1
 position = Vector2( 225, 0 )
 script = ExtResource( 2 )
 star = ExtResource( 3 )
@@ -580,7 +580,7 @@ wait_time = 0.05
 autostart = true
 
 [node name="UI" type="Node2D" parent="."]
-pause_mode = 1
+process_mode = 1
 z_index = 150
 
 [node name="Panel" type="Panel" parent="UI"]
@@ -590,54 +590,54 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 30.0
-margin_top = 211.0
-margin_right = 380.0
-margin_bottom = 626.0
-custom_styles/panel = SubResource( 4 )
+offset_left = 30.0
+offset_top = 211.0
+offset_right = 380.0
+offset_bottom = 626.0
+theme_override_styles/panel = SubResource( 4 )
 
 [node name="container" type="VBoxContainer" parent="UI/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 
 [node name="space" type="Control" parent="UI/Panel/container"]
-margin_right = 340.0
-margin_bottom = 285.0
+offset_right = 340.0
+offset_bottom = 285.0
 size_flags_vertical = 3
 
 [node name="Restart" type="Button" parent="UI/Panel/container"]
-margin_top = 289.0
-margin_right = 340.0
-margin_bottom = 345.0
-focus_neighbour_bottom = NodePath("../Menu")
+offset_top = 289.0
+offset_right = 340.0
+offset_bottom = 345.0
+focus_neighbor_bottom = NodePath("../Menu")
 focus_next = NodePath("../Menu")
-custom_fonts/font = ExtResource( 14 )
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 20 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 22 )
-custom_styles/normal = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 14 )
+theme_override_styles/hover = ExtResource( 23 )
+theme_override_styles/pressed = ExtResource( 20 )
+theme_override_styles/focus = ExtResource( 24 )
+theme_override_styles/disabled = ExtResource( 22 )
+theme_override_styles/normal = ExtResource( 21 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Menu" type="Button" parent="UI/Panel/container"]
-margin_top = 349.0
-margin_right = 340.0
-margin_bottom = 405.0
-focus_neighbour_top = NodePath("../Restart")
+offset_top = 349.0
+offset_right = 340.0
+offset_bottom = 405.0
+focus_neighbor_top = NodePath("../Restart")
 focus_previous = NodePath("../Restart")
-custom_fonts/font = ExtResource( 14 )
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 20 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 22 )
-custom_styles/normal = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 14 )
+theme_override_styles/hover = ExtResource( 23 )
+theme_override_styles/pressed = ExtResource( 20 )
+theme_override_styles/focus = ExtResource( 24 )
+theme_override_styles/disabled = ExtResource( 22 )
+theme_override_styles/normal = ExtResource( 21 )
 disabled = true
 text = "Menu"
 __meta__ = {
@@ -645,17 +645,17 @@ __meta__ = {
 }
 
 [node name="Pause" type="Panel" parent="UI"]
-pause_mode = 2
+process_mode = 3
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 30.0
-margin_top = 211.0
-margin_right = 380.0
-margin_bottom = 626.0
-custom_styles/panel = SubResource( 4 )
+offset_left = 30.0
+offset_top = 211.0
+offset_right = 380.0
+offset_bottom = 626.0
+theme_override_styles/panel = SubResource( 4 )
 script = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -664,67 +664,67 @@ __meta__ = {
 [node name="container" type="VBoxContainer" parent="UI/Pause"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="space" type="Control" parent="UI/Pause/container"]
-margin_right = 340.0
-margin_bottom = 179.0
+offset_right = 340.0
+offset_bottom = 179.0
 size_flags_vertical = 3
 
 [node name="Continue" type="Button" parent="UI/Pause/container"]
-margin_top = 238.0
-margin_right = 340.0
-margin_bottom = 291.0
-focus_neighbour_bottom = NodePath("../Restart")
+offset_top = 238.0
+offset_right = 340.0
+offset_bottom = 291.0
+focus_neighbor_bottom = NodePath("../Restart")
 focus_next = NodePath("../Restart")
-custom_fonts/font = ExtResource( 14 )
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 20 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 22 )
-custom_styles/normal = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 14 )
+theme_override_styles/hover = ExtResource( 23 )
+theme_override_styles/pressed = ExtResource( 20 )
+theme_override_styles/focus = ExtResource( 24 )
+theme_override_styles/disabled = ExtResource( 22 )
+theme_override_styles/normal = ExtResource( 21 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restart" type="Button" parent="UI/Pause/container"]
-margin_top = 295.0
-margin_right = 340.0
-margin_bottom = 348.0
-focus_neighbour_top = NodePath("../Continue")
-focus_neighbour_bottom = NodePath("../Menu")
+offset_top = 295.0
+offset_right = 340.0
+offset_bottom = 348.0
+focus_neighbor_top = NodePath("../Continue")
+focus_neighbor_bottom = NodePath("../Menu")
 focus_next = NodePath("../Menu")
 focus_previous = NodePath("../Continue")
-custom_fonts/font = ExtResource( 14 )
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 20 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 22 )
-custom_styles/normal = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 14 )
+theme_override_styles/hover = ExtResource( 23 )
+theme_override_styles/pressed = ExtResource( 20 )
+theme_override_styles/focus = ExtResource( 24 )
+theme_override_styles/disabled = ExtResource( 22 )
+theme_override_styles/normal = ExtResource( 21 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Menu" type="Button" parent="UI/Pause/container"]
-margin_top = 352.0
-margin_right = 340.0
-margin_bottom = 405.0
-focus_neighbour_top = NodePath("../Restart")
+offset_top = 352.0
+offset_right = 340.0
+offset_bottom = 405.0
+focus_neighbor_top = NodePath("../Restart")
 focus_previous = NodePath("../Restart")
-custom_fonts/font = ExtResource( 14 )
-custom_styles/hover = ExtResource( 23 )
-custom_styles/pressed = ExtResource( 20 )
-custom_styles/focus = ExtResource( 24 )
-custom_styles/disabled = ExtResource( 22 )
-custom_styles/normal = ExtResource( 21 )
+theme_override_fonts/font = ExtResource( 14 )
+theme_override_styles/hover = ExtResource( 23 )
+theme_override_styles/pressed = ExtResource( 20 )
+theme_override_styles/focus = ExtResource( 24 )
+theme_override_styles/disabled = ExtResource( 22 )
+theme_override_styles/normal = ExtResource( 21 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -732,10 +732,10 @@ __meta__ = {
 
 [node name="Boss" type="ProgressBar" parent="UI"]
 visible = false
-margin_left = 31.0
-margin_top = 785.0
-margin_right = 441.0
-margin_bottom = 795.0
+offset_left = 31.0
+offset_top = 785.0
+offset_right = 441.0
+offset_bottom = 795.0
 theme = SubResource( 3 )
 value = 100.0
 percent_visible = false
@@ -743,89 +743,89 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="UI/Boss"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/Boss"]
 position = Vector2( -15, 8 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 18 )
 
 [node name="HUD" type="VBoxContainer" parent="UI"]
-margin_left = 3.0
-margin_top = 3.0
-margin_right = 447.0
-margin_bottom = 103.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 447.0
+offset_bottom = 103.0
 
 [node name="Bars" type="HBoxContainer" parent="UI/HUD"]
-margin_right = 444.0
-margin_bottom = 16.0
+offset_right = 444.0
+offset_bottom = 16.0
 
 [node name="Health" type="ProgressBar" parent="UI/HUD/Bars"]
 unique_name_in_owner = true
-margin_right = 193.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 0, 16 )
+offset_right = 193.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
-custom_styles/fg = SubResource( 19 )
-custom_styles/bg = SubResource( 20 )
+theme_override_styles/fg = SubResource( 19 )
+theme_override_styles/bg = SubResource( 20 )
 value = 100.0
 allow_greater = true
 allow_lesser = true
 percent_visible = false
 
 [node name="Space" type="Control" parent="UI/HUD/Bars"]
-margin_left = 197.0
-margin_right = 247.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 50, 0 )
+offset_left = 197.0
+offset_right = 247.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 50, 0 )
 
 [node name="Energy" type="ProgressBar" parent="UI/HUD/Bars"]
 unique_name_in_owner = true
-margin_left = 251.0
-margin_right = 444.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 0, 16 )
+offset_left = 251.0
+offset_right = 444.0
+offset_bottom = 16.0
+custom_minimum_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
-custom_styles/fg = SubResource( 18 )
-custom_styles/bg = SubResource( 21 )
+theme_override_styles/fg = SubResource( 18 )
+theme_override_styles/bg = SubResource( 21 )
 value = 100.0
 allow_greater = true
 allow_lesser = true
 percent_visible = false
 
 [node name="Score" type="HBoxContainer" parent="UI/HUD"]
-margin_top = 20.0
-margin_right = 444.0
-margin_bottom = 102.0
+offset_top = 20.0
+offset_right = 444.0
+offset_bottom = 102.0
 
 [node name="Score" type="Label" parent="UI/HUD/Score"]
-margin_left = 5.0
-margin_top = 4.0
-margin_right = 40.0
-margin_bottom = 86.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 40.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color( 0, 0, 0, 1 )
+theme_override_fonts/font = SubResource( 1 )
 text = "0"
 
 [node name="Control" type="Control" parent="UI/HUD/Score"]
-margin_left = 39.0
-margin_right = 444.0
-margin_bottom = 82.0
+offset_left = 39.0
+offset_right = 444.0
+offset_bottom = 82.0
 size_flags_horizontal = 3
 
 [node name="High" type="Label" parent="UI/HUD/Score"]
 visible = false
-margin_left = 295.0
-margin_top = 27.0
-margin_right = 444.0
-margin_bottom = 55.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 14 )
+offset_left = 295.0
+offset_top = 27.0
+offset_right = 444.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/font = SubResource( 14 )
 text = "New Highscore!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-pause_mode = 2
+process_mode = 3
 playback_speed = 2.0
 anims/RESET = SubResource( 17 )
 anims/finish = SubResource( 9 )

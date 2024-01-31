@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/laser-2.wav-1ba61920b6f632c3fe78e93312953763.sample"
+type="AudioStreamWAV"
+uid="uid://bad7mlgxpk4g0"
+path="res://.godot/imported/laser-2.wav-1ba61920b6f632c3fe78e93312953763.sample"
 
 [deps]
 
 source_file="res://assets/sounds/laser-2.wav"
-dest_files=[ "res://.import/laser-2.wav-1ba61920b6f632c3fe78e93312953763.sample" ]
+dest_files=["res://.godot/imported/laser-2.wav-1ba61920b6f632c3fe78e93312953763.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

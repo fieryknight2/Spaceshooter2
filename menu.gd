@@ -1,10 +1,10 @@
 extends Control
 
-export (PackedScene) var play_scene
-export (PackedScene) var score_p
-export (NodePath) var scores_path
+@export var play_scene : PackedScene
+@export var score_p : PackedScene
+@export var scores_path : NodePath
 
-onready var scores = get_node(scores_path)
+@onready var scores = get_node(scores_path)
 
 var ship_data = [
 	{
@@ -31,14 +31,14 @@ var difficulty = 0
 var level = 0
 
 func _ready():
-	$Buttons.rect_position = Vector2(-1000, -1000)
+	$Buttons.position = Vector2(-1000, -1000)
 	get_tree().paused = false
 	$AnimationPlayer.play("enter")
 	$MusicOff.play("Start Music")
 	
 	Globals.process_scores()
 	for score in Globals.high_scores:
-		var c = score_p.instance()
+		var c = score_p.instantiate()
 		
 		c.highscore_ship = score["ship"]
 		c.highscore_score = score["score"]
@@ -105,7 +105,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			Globals.difficulty = difficulty
 			Globals.endless_play = true
 # warning-ignore:return_value_discarded
-			get_tree().change_scene_to(play_scene)
+			get_tree().change_scene_to_packed(play_scene)
 		else:
 			$AnimationPlayer.play("enter")
 

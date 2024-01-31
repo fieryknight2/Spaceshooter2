@@ -2,8 +2,8 @@ extends Area2D
 
 # basic spaceship projectile manager
 
-export (float) var move_speed
-export (PackedScene) var explosion
+@export var move_speed : float
+@export var explosion : PackedScene
 
 var damage
 
@@ -29,7 +29,7 @@ func _on_laser_area_entered(area):
 		area.health -= damage
 		
 		# explode
-		var e = explosion.instance()
+		var e = explosion.instantiate()
 		e.position = position
 		e.get_child(0).volume = -25
 		get_tree().current_scene.add_child(e)

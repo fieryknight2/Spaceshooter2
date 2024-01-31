@@ -1,12 +1,12 @@
-extends Sprite
+extends Sprite2D
 
-export (float) var move_speed
-export (float) var max_scale
-export (float) var min_scale
+@export var move_speed : float
+@export var max_scale : float
+@export var min_scale : float
 
-export (Color) var max_yellow
-export (Color) var max_green
-export (Color) var base_color
+@export var max_yellow : float
+@export var max_green : float
+@export var base_color : Color
 
 var ms
 var rand = RandomNumberGenerator.new()
@@ -21,8 +21,8 @@ func _ready():
 	# set speed so the smaller the scale the slower you go
 	ms = rand.randf_range(move_speed, move_speed*move_speed*scale.x)
 	
-	var rand_yellow = base_color.linear_interpolate(max_yellow, rand.randf_range(0.0, 1.0))
-	var rand_green = base_color.linear_interpolate(max_green, rand.randf_range(0.0, 1.0))
+	var rand_yellow = base_color.lerp(Color(max_yellow, max_yellow, 0), rand.randf_range(0.0, 1.0))
+	var rand_green = base_color.lerp(Color(0, max_green, 0), rand.randf_range(0.0, 1.0))
 	modulate = rand_green.blend(rand_yellow)
 	
 	

@@ -1,26 +1,26 @@
 extends Node2D
 
-export (Array, PackedScene) var spaceships
+@export var spaceships : Array[PackedScene]
 var score = 0
-export (float) var speed_up
-export (float) var health_speed_up
+@export var speed_up : float
+@export var health_speed_up : float
 var score_mod = 1
 var speed_scale = 1
 var health_scale = 1
-export (NodePath) var text_name_path
-export (NodePath) var text_name_2_path
-export (NodePath) var boss_health_path
-onready var boss_health = get_node(boss_health_path)
+@export var text_name_path : NodePath
+@export var text_name_2_path : NodePath
+@export var boss_health_path : NodePath
+@onready var boss_health = get_node(boss_health_path)
 
-export (Color) var max_health_color
-export (Color) var middle_health_color
-export (Color) var no_health_color
-export (Color) var max_energy_color
-export (Color) var no_energy_color
+@export var max_health_color : Color
+@export var middle_health_color : Color
+@export var no_health_color : Color
+@export var max_energy_color : Color
+@export var no_energy_color : Color
 
-export (Array, float) var difficulties
+@export var difficulties : Array[float]
 
-export (float) var animation_speed
+@export var animation_speed : float
 
 var player_alive = true
 var player = null
@@ -31,12 +31,12 @@ var e_health_value
 var e_energy_value
 var die_once = false
 
-onready var Health : ProgressBar = get_node("%Health")
-onready var Energy : ProgressBar = get_node("%Energy")
+@onready var Health : ProgressBar = get_node("%Health")
+@onready var Energy : ProgressBar = get_node("%Energy")
 
 func _ready():
 	get_tree().paused = false
-	var ss = spaceships[Globals.ship].instance()
+	var ss = spaceships[Globals.ship].instantiate()
 	score_mod = ss.score_modifier
 	add_child(ss)
 	player = ss
@@ -54,7 +54,7 @@ func _ready():
 	
 func _process(delta):
 	score = int(score)
-	$UI/HUD/Score/Score.text = String(score)
+	$UI/HUD/Score/Score.text = str(score)
 	if len(Globals.high_scores) and score > Globals.high_scores[0]["score"]:
 		$UI/HUD/Score/High.visible = true
 	
@@ -92,15 +92,15 @@ func _process(delta):
 		$EnergyTween.start()
 		
 
-	Energy.get("custom_styles/fg").bg_color = no_energy_color.linear_interpolate( 
+	Energy.get("theme_override_styles/fg").bg_color = no_energy_color.lerp( 
 							max_energy_color, Energy.value / Energy.max_value)
 			
 	if Health.value / Health.max_value > 0.5:
-		Health.get("custom_styles/fg").bg_color = middle_health_color.linear_interpolate(
+		Health.get("theme_override_styles/fg").bg_color = middle_health_color.lerp(
 							max_health_color, (Health.value - (Health.max_value / 2)) / 
 													(Health.max_value - (Health.max_value / 2)))
 	else:
-		Health.get("custom_styles/fg").bg_color = no_health_color.linear_interpolate(
+		Health.get("theme_override_styles/fg").bg_color = no_health_color.lerp(
 							middle_health_color, Health.value 
 												/ (Health.max_value - (Health.max_value / 2)))
 	
@@ -152,7 +152,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			get_tree().reload_current_scene()
 		else:
 # warning-ignore:return_value_discarded
-			get_tree().change_scene("res://Menu.tscn")
+			get_tree().change_scene_to_file("res://Menu.tscn")
 	if anim_name == "player_dead":
 		$UI/Panel/container/Restart.grab_focus()
 	if anim_name == "hide_pause":

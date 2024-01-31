@@ -1,14 +1,14 @@
 extends Area2D
 
-export (float) var movement_speed
-export (float) var turn_speed
-export (int) var border
-export (int) var health
-export (float) var reload_time
-export (int) var damage
-export (PackedScene) var explosion
-export (PackedScene) var projectile
-export (Array, NodePath) var fire_points
+@export var movement_speed : float
+@export var turn_speed : float
+@export var border : int
+@export var health : int
+@export var reload_time : float
+@export var damage : int
+@export var explosion : PackedScene
+@export var projectile : PackedScene
+@export var fire_points : Array[NodePath]
 
 var max_health
 var t_dir = 0
@@ -31,14 +31,14 @@ func _process(delta):
 	else:
 		$Health.visible = true
 		
-	$Sprite.rotation_degrees += t_dir * delta * turn_speed * get_tree().current_scene.speed_scale
-	if $Sprite.rotation_degrees < 70:
+	$Sprite2D.rotation_degrees += t_dir * delta * turn_speed * get_tree().current_scene.speed_scale
+	if $Sprite2D.rotation_degrees < 70:
 		t_dir = 1
-	if $Sprite.rotation_degrees > 110:
+	if $Sprite2D.rotation_degrees > 110:
 		t_dir = -1
-	$Sprite.rotation_degrees = clamp($Sprite.rotation_degrees, 70, 110)
+	$Sprite2D.rotation_degrees = clamp($Sprite2D.rotation_degrees, 70, 110)
 	
-	var velo = Vector2(movement_speed * get_tree().current_scene.speed_scale, 0).rotated($Sprite.rotation)
+	var velo = Vector2(movement_speed * get_tree().current_scene.speed_scale, 0).rotated($Sprite2D.rotation)
 	position += velo * delta
 	
 	if position.y > get_viewport().size.y + 100:
@@ -57,7 +57,7 @@ func _process(delta):
 	
 func die():
 	# boom
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.position = position
 	e.volume = -22
 	get_tree().current_scene.add_child(e)
@@ -76,7 +76,7 @@ func _on_Fire_timeout():
 		return
 		
 	for f in fire_points:
-		var p = projectile.instance()
+		var p = projectile.instantiate()
 		p.position = get_node(f).global_position
 		p.rotation = get_node(f).global_rotation
 		p.damage = damage

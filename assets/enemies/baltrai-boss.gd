@@ -1,21 +1,21 @@
 extends Area2D
 
-export (Array, NodePath) var turrets
-export (Array, NodePath) var l1lasers
-export (Array, NodePath) var l5lasers_1
-export (Array, NodePath) var l5lasers_2
-export (Array, NodePath) var l10lasers
-export (PackedScene) var explosion
-export (PackedScene) var giant_laser
-export (PackedScene) var big_laser
-export (PackedScene) var little_laser
-export (float) var turret_wait
-export (float) var l1laser_wait
-export (float) var l5laser_wait
-export (float) var l10laser_wait
+@export var turrets : Array[NodePath]
+@export var l1lasers : Array[NodePath]
+@export var l5lasers_1 : Array[NodePath]
+@export var l5lasers_2 : Array[NodePath]
+@export var l10lasers : Array[NodePath]
+@export var explosion : PackedScene
+@export var giant_laser : PackedScene
+@export var big_laser : PackedScene
+@export var little_laser : PackedScene
+@export var turret_wait : float
+@export var l1laser_wait : float
+@export var l5laser_wait : float
+@export var l10laser_wait : float
 
-export (float) var move_speed
-export (int) var health
+@export var move_speed : float
+@export var health : int
 
 var max_health
 var c_turret = 0
@@ -50,7 +50,7 @@ func deal_damage(damage):
 func die():
 	get_tree().current_scene.end_boss()
 	
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.position = position
 	e.scale.x = 2
 	e.scale.y = 2
@@ -71,7 +71,7 @@ func _on_T_timeout():
 	if c_turret >= len(turrets):
 		c_turret = 0
 	
-	var t = little_laser.instance()
+	var t = little_laser.instantiate()
 	t.damage = 1
 	t.position = get_node(turrets[c_turret]).fp.global_position
 	t.rotation = get_node(turrets[c_turret]).fp.global_rotation
@@ -87,7 +87,7 @@ func _on_L1_timeout():
 	if c_slaser >= len(l1lasers):
 		c_slaser = 0
 		
-	var l = little_laser.instance()
+	var l = little_laser.instantiate()
 	l.position = get_node(l1lasers[c_slaser]).global_position
 	l.rotation = get_node(l1lasers[c_slaser]).global_rotation
 	l.damage = 1
@@ -107,7 +107,7 @@ func _on_L5_timeout():
 	c_mlaser = not c_mlaser
 	
 	for laser in x:
-		var l = big_laser.instance()
+		var l = big_laser.instantiate()
 		l.position = get_node(laser).global_position
 		l.rotation = get_node(laser).global_rotation
 		l.damage = 5
@@ -118,7 +118,7 @@ func _on_L10_timeout():
 	$L10.start(l10laser_wait * get_tree().current_scene.speed_scale)
 	
 	for laser in l10lasers:
-		var l = giant_laser.instance()
+		var l = giant_laser.instantiate()
 		l.position = get_node(laser).global_position
 		l.rotation = get_node(laser).global_rotation
 		l.damage = 10

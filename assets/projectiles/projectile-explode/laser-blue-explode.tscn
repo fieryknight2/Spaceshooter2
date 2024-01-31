@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=1]
-[ext_resource path="res://assets/projectiles/projectile-explode/laser-blue-explode.png" type="Texture" id=2]
+[ext_resource path="res://assets/projectiles/projectile-explode/laser-blue-explode.png" type="Texture2D" id=2]
 [ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
@@ -51,7 +51,7 @@ animations = [ {
 [node name="root" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
 
-[node name="explode" type="AnimatedSprite" parent="."]
+[node name="explode" type="AnimatedSprite2D" parent="."]
 position = Vector2( 0, 50 )
 scale = Vector2( 1, 2 )
 z_index = 50

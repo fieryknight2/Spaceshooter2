@@ -920,8 +920,6 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("4")
 play_scene = ExtResource("5")
 score_p = ExtResource("8")
@@ -955,10 +953,10 @@ anchor_left = -1.491
 anchor_top = 0.395
 anchor_right = -1.491
 anchor_bottom = 0.395
-offset_left = -500.0
-offset_top = 50.0
-offset_right = -188.0
-offset_bottom = 822.0
+offset_left = 170.95
+offset_top = -266.0
+offset_right = 482.95
+offset_bottom = 506.0
 
 [node name="EndlessPlay" type="Button" parent="Buttons"]
 layout_mode = 0

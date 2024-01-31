@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/projectiles/projectile-explode/laser-red-explode.png" type="Texture" id=1]
+[ext_resource path="res://assets/projectiles/projectile-explode/laser-red-explode.png" type="Texture2D" id=1]
 [ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/laser-splash-1.wav" type="AudioStream" id=4]
@@ -40,7 +40,7 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 
-[node name="explode" type="AnimatedSprite" parent="."]
+[node name="explode" type="AnimatedSprite2D" parent="."]
 position = Vector2( 0, -55 )
 rotation = 3.14159
 scale = Vector2( 1.5, 2 )

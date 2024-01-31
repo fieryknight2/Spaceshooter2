@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/explosions-1.wav-c0b56a548d037a1fbe99b095817cbe0f.sample"
+type="AudioStreamWAV"
+uid="uid://dlnird33j35ll"
+path="res://.godot/imported/explosions-1.wav-c0b56a548d037a1fbe99b095817cbe0f.sample"
 
 [deps]
 
 source_file="res://assets/sounds/explosions-1.wav"
-dest_files=[ "res://.import/explosions-1.wav-c0b56a548d037a1fbe99b095817cbe0f.sample" ]
+dest_files=["res://.godot/imported/explosions-1.wav-c0b56a548d037a1fbe99b095817cbe0f.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

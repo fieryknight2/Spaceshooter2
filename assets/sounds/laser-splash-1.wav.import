@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/laser-splash-1.wav-71c1f86940c0b60965d6f0ca4c56cd46.sample"
+type="AudioStreamWAV"
+uid="uid://l8yx5rmdot2r"
+path="res://.godot/imported/laser-splash-1.wav-71c1f86940c0b60965d6f0ca4c56cd46.sample"
 
 [deps]
 
 source_file="res://assets/sounds/laser-splash-1.wav"
-dest_files=[ "res://.import/laser-splash-1.wav-71c1f86940c0b60965d6f0ca4c56cd46.sample" ]
+dest_files=["res://.godot/imported/laser-splash-1.wav-71c1f86940c0b60965d6f0ca4c56cd46.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

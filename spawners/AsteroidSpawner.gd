@@ -2,7 +2,7 @@ extends Node2D
 
 # simple spawner script for spawning asteroids
 
-export (PackedScene) var asteroid
+@export var asteroid : PackedScene
 
 var rg = RandomNumberGenerator.new()
 
@@ -14,7 +14,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	# create asteroid instance
-	var a = asteroid.instance()
+	var a = asteroid.instantiate()
 	
 	# set asteroid position
 	a.position.x = rg.randf_range(0, get_viewport().size.x)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/spaceships/spaceship.gd" type="Script" id=1]
-[ext_resource path="res://assets/spaceships/blue.png" type="Texture" id=2]
-[ext_resource path="res://assets/spaceships/green.png" type="Texture" id=3]
-[ext_resource path="res://assets/spaceships/red.png" type="Texture" id=4]
-[ext_resource path="res://assets/spaceships/spaceship-3.png" type="Texture" id=5]
+[ext_resource path="res://assets/spaceships/blue.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/spaceships/green.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/spaceships/red.png" type="Texture2D" id=4]
+[ext_resource path="res://assets/spaceships/spaceship-3.png" type="Texture2D" id=5]
 [ext_resource path="res://assets/explosions/explosion.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/projectiles/laser-blue.tscn" type="PackedScene" id=7]
 
@@ -45,10 +45,10 @@ max_energy = 150.0
 energy_reload = 60.0
 shot_energy = 60.0
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource( 5 )
 
-[node name="P1" type="CPUParticles2D" parent="Sprite"]
+[node name="P1" type="CPUParticles2D" parent="Sprite2D"]
 show_behind_parent = true
 position = Vector2( 0, 29 )
 amount = 12
@@ -61,7 +61,7 @@ spread = 15.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 150.0
 
-[node name="P2" type="CPUParticles2D" parent="Sprite"]
+[node name="P2" type="CPUParticles2D" parent="Sprite2D"]
 show_behind_parent = true
 position = Vector2( 0, 29 )
 z_index = -1
@@ -76,7 +76,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 150.0
 scale_amount = 0.5
 
-[node name="P3" type="CPUParticles2D" parent="Sprite"]
+[node name="P3" type="CPUParticles2D" parent="Sprite2D"]
 show_behind_parent = true
 position = Vector2( 0, 29 )
 z_index = -1
@@ -91,17 +91,17 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 150.0
 scale_amount = 0.35
 
-[node name="FP1" type="Position2D" parent="."]
+[node name="FP1" type="Marker2D" parent="."]
 position = Vector2( 0, -41 )
 
 [node name="Reload" type="Timer" parent="."]
 
 [node name="Health" type="ProgressBar" parent="."]
 visible = false
-margin_left = -40.0
-margin_top = -44.0
-margin_right = 40.0
-margin_bottom = -42.0
+offset_left = -40.0
+offset_top = -44.0
+offset_right = 40.0
+offset_bottom = -42.0
 theme = SubResource( 3 )
 value = 90.0
 percent_visible = false
@@ -110,7 +110,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 6, -28, 11.5, 8.4, 23.1, -4, 26, -4, 31.3, 2.7, 30.3, 5, 29.2, 5, 15.2, 32, -17, 32, -32, 4.4, -32, 0, -31, 0, -28, -4, -25.5, -4, -22, -2.2, -22, -0.799999, -13.6, 7.6, -8, -28.3, -8, -32, 6, -32 )
+polygon = PackedVector2Array( 6, -28, 11.5, 8.4, 23.1, -4, 26, -4, 31.3, 2.7, 30.3, 5, 29.2, 5, 15.2, 32, -17, 32, -32, 4.4, -32, 0, -31, 0, -28, -4, -25.5, -4, -22, -2.2, -22, -0.799999, -13.6, 7.6, -8, -28.3, -8, -32, 6, -32 )
 
 [connection signal="area_entered" from="." to="." method="_on_Spaceship_area_entered"]
 [connection signal="timeout" from="Reload" to="." method="_on_Reload_timeout"]

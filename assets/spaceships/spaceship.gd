@@ -1,22 +1,22 @@
 extends Area2D
 
 # spaceship movement script
-export (float) var move_speed
-export (float) var action_speed
-export (float) var max_velocity
-export (float) var deceleration
-export (float) var reload_time
-export (int) var damage
-export (int) var max_health
-export (float) var health_reload
-export (float) var score_modifier
-export (float) var wall_boundaries
-export (PackedScene) var explosion
-export (PackedScene) var projectile
-export (Array, NodePath) var fire_points
-export (float) var max_energy
-export (float) var energy_reload
-export (float) var shot_energy
+@export var move_speed : float
+@export var action_speed : float
+@export var max_velocity : float
+@export var deceleration : float
+@export var reload_time : float
+@export var damage : int
+@export var max_health : int
+@export var health_reload : float
+@export var score_modifier : float
+@export var wall_boundaries : float
+@export var explosion : PackedScene
+@export var projectile : PackedScene
+@export var fire_points : Array[NodePath]
+@export var max_energy : float
+@export var energy_reload : float
+@export var shot_energy : float
 
 var velocity = Vector2()
 var can_fire = true
@@ -113,7 +113,7 @@ func _process(delta):
 		for p in fire_points:
 			if energy < shot_energy:
 				continue
-			var e = projectile.instance()
+			var e = projectile.instantiate()
 			e.position = get_node(p).position + position
 			e.rotation = get_node(p).rotation
 			e.damage = damage
@@ -145,7 +145,7 @@ func _process(delta):
 func die():
 	Input.start_joy_vibration(0, 1, 1, 1)
 	# boom
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.scale = scale
 	e.position = position
 	e.volume = -10

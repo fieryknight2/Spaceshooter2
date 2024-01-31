@@ -1,16 +1,16 @@
 extends Area2D
 
-export (Array, PackedScene) var asteroids
-export (float) var max_speed
-export (float) var min_speed
-export (float) var max_size
-export (float) var min_size
-export (float) var rotate_speed
-export (int) var health_value
+@export var asteroids : Array[PackedScene]
+@export var max_speed : float
+@export var min_speed : float
+@export var max_size : float
+@export var min_size : float
+@export var rotate_speed : float
+@export var health_value : int
 
-export (PackedScene) var baby_asteroid
-export (PackedScene) var asteroid_chunk
-export (PackedScene) var explosion
+@export var baby_asteroid : PackedScene
+@export var asteroid_chunk : PackedScene
+@export var explosion : PackedScene
 
 var rg = RandomNumberGenerator.new()
 
@@ -25,7 +25,7 @@ func _ready():
 	
 	# set a random image for this asteroid
 	var image = rg.randi_range(0, asteroids.size() - 1)
-	add_child_below_node($cracks, asteroids[image].instance())
+	$cracks.add_sibling(asteroids[image].instantiate())
 	
 	
 	# random speed
@@ -62,7 +62,7 @@ func _process(delta):
 	
 func die():
 	# boom
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.scale = scale
 	e.position = position
 	e.volume = -15
@@ -75,7 +75,7 @@ func die():
 	if (size_value > 7):
 		# if size value is more than 0.7, create new tiny asteroids
 		for _i in range(size_value - 7):
-			var ba = baby_asteroid.instance()
+			var ba = baby_asteroid.instantiate()
 			# move to a random location near the asteroid
 			ba.position = Vector2(rg.randf_range(position.x-60, position.x+60), 
 								  rg.randf_range(position.y-60, position.y+60))
@@ -92,7 +92,7 @@ func die():
 			get_tree().current_scene.call_deferred("add_child", ba)
 	# create extra asteroid chunks (1 chunk for every 2 size values)
 	for _i in range(int(size_value / 2)):
-		var ac = asteroid_chunk.instance()
+		var ac = asteroid_chunk.instantiate()
 		# move to a random location near the asteroid
 		ac.position = Vector2(rg.randf_range(position.x-20, position.x+20), 
 							  rg.randf_range(position.y-20, position.y+20))

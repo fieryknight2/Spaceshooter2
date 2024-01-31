@@ -2,7 +2,7 @@ extends Node2D
 
 # simple planet spawner (for background)
 
-export (Array, PackedScene) var planets
+@export var planets : Array[PackedScene]
 
 var rg = RandomNumberGenerator.new()
 
@@ -14,7 +14,7 @@ func _ready():
 	
 func spawn_planet():
 	# create planet instance
-	var p = planets[rg.randi_range(0, planets.size() - 1)].instance()
+	var p = planets[rg.randi_range(0, planets.size() - 1)].instantiate()
 	
 	# set planet position
 	p.position.x = rg.randf_range(-5, get_viewport().size.x + 5)

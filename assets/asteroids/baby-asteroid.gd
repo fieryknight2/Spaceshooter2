@@ -1,8 +1,8 @@
 extends Area2D
 
-export (Array, PackedScene) var asteroids
-export (PackedScene) var asteroid_chunk
-export (PackedScene) var explosion
+@export var asteroids : Array[PackedScene]
+@export var asteroid_chunk : PackedScene
+@export var explosion : PackedScene
 var speed
 var size
 var health : float
@@ -16,7 +16,7 @@ func _ready():
 	
 	# set a random image for this asteroid
 	var image = rg.randi_range(0, asteroids.size() - 1)
-	add_child_below_node($cracks, asteroids[image].instance())
+	$cracks.add_sibling(asteroids[image].instantiate())
 	
 	# all we need to do here is set the size
 	scale.x = size * 0.2
@@ -37,7 +37,7 @@ func _process(delta):
 
 func die():
 	# boom
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.scale = scale / 2
 	e.position = position
 	e.volume = -22
@@ -45,7 +45,7 @@ func die():
 	
 	# create 2 asteroid chunks
 	for _i in range(2):
-		var ac = asteroid_chunk.instance()
+		var ac = asteroid_chunk.instantiate()
 		# move to a random location near the asteroid
 		ac.position = Vector2(rg.randf_range(position.x-2, position.x+2), 
 							  rg.randf_range(position.y-2, position.y+2))

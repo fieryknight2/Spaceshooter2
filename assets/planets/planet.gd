@@ -1,4 +1,4 @@
-extends Sprite
+extends Sprite2D
 
 # quick planet movement script
 var move_speed

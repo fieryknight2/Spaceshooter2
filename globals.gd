@@ -10,11 +10,10 @@ var endless_play = false
 var difficulty = 0
 
 func _enter_tree():
-	var x = File.new()
-	if not x.file_exists("user://data.save"):
+	if not FileAccess.file_exists("user://data.save"):
 		return
 	
-	x.open("user://data.save", File.READ)
+	var x = FileAccess.open("user://data.save", FileAccess.READ)
 	
 	var version = x.get_line()
 	if !version.is_valid_float() or float(version) <= last_break:
@@ -22,25 +21,26 @@ func _enter_tree():
 			print("Save file version is too old, deleting...")
 		else:
 			print("Save file version (" + version + ") is too old, deleting...")
-		var _c = Directory.new().remove("user://data.save")
+			DirAccess.remove_absolute("user://data.save")
 		return
 		
-	high_scores = parse_json(x.get_line())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(x.get_line())
+	high_scores = test_json_conv.get_data()
 	ship = int(x.get_line())
 	prev_name = x.get_line()
 	
 	process_scores()
 	
 func _exit_tree():
-	var x = File.new()
-	x.open("user://data.save", File.WRITE)
+	var x = FileAccess.open("user://data.save", FileAccess.WRITE)
 	x.store_line(String(c_version))
-	x.store_line(to_json(high_scores))
+	x.store_line(JSON.new().stringify(high_scores))
 	x.store_line(String(ship))
 	x.store_line(prev_name)
 
 func process_scores():
-	high_scores.sort_custom(self, "sort_scores")
+	high_scores.sort_custom(Callable(self, "sort_scores"))
 	if high_scores.size() > 15:
 		high_scores.resize(15)
 	

@@ -1,16 +1,16 @@
 extends Area2D
 
-export (float) var movement_speed
-export (float) var slow_speed
-export (float) var vel_length
-export (float) var downward_speed
-export (int) var border
-export (int) var health
-export (float) var reload_time
-export (int) var damage
-export (PackedScene) var explosion
-export (PackedScene) var projectile
-export (Array, NodePath) var fire_points
+@export var movement_speed : float
+@export var slow_speed : float
+@export var vel_length : float
+@export var downward_speed : float
+@export var border : int
+@export var health : int
+@export var reload_time : float
+@export var damage : int
+@export var explosion : PackedScene
+@export var projectile : PackedScene
+@export var fire_points : Array[NodePath]
 
 var max_health
 var direction = 0
@@ -23,7 +23,7 @@ func _ready():
 
 func _process(delta):
 	if direction == 0:
-		direction = rand_range(-vel_length, vel_length)
+		direction = randf_range(-vel_length, vel_length)
 	else:
 		if direction > 0:
 			direction -= slow_speed * delta
@@ -58,7 +58,7 @@ func _process(delta):
 
 func die():
 	# boom
-	var e = explosion.instance()
+	var e = explosion.instantiate()
 	e.position = position
 	e.volume = -20
 	get_tree().current_scene.add_child(e)
@@ -74,7 +74,7 @@ func _on_Fire_timeout():
 		return
 		
 	for e in fire_points:
-		var fp = projectile.instance()
+		var fp = projectile.instantiate()
 		fp.position = get_node(e).position + position
 		fp.damage = damage
 		get_tree().current_scene.add_child(fp)

@@ -2,9 +2,9 @@ extends Node2D
 
 # simple movement script
 
-export (float) var speed_value
-export (float) var rotate_speed 
-export (float) var fade_speed
+@export var speed_value : float
+@export var rotate_speed : float
+@export var fade_speed : float
 var speed = 0 
 var rotate_dir = 0
 var move_dir = Vector2()
