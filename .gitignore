@@ -14,3 +14,4 @@ export_presets.cfg
 export
 .DS_Store
 addons/github-integration
+export_presets.cfg
