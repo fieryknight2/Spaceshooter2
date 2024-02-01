@@ -1378,7 +1378,8 @@ max_health_color = Color(0.12549, 1, 0, 1)
 middle_health_color = Color(1, 0.960784, 0, 1)
 no_health_color = Color(1, 0, 0, 1)
 max_energy_color = Color(1, 1, 0, 1)
-difficulties = Array[float]([1.0, 1.5, 2.0, 4.0])
+no_energy_color = Color(1, 1, 0, 0.686275)
+difficulties = Array[float]([4.0, 3.0, 2.0, 1.0])
 animation_speed = 8.0
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]

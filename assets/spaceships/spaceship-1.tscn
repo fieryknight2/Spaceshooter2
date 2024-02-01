@@ -36,7 +36,7 @@ action_speed = 20.0
 max_velocity = 30.0
 deceleration = 20.0
 reload_time = 0.3
-damage = 3
+damage = 2
 max_health = 50
 health_reload = 1.0
 score_modifier = 1.1
@@ -45,8 +45,8 @@ wall_margin = 50.0
 explosion = ExtResource("6")
 projectile = ExtResource("7")
 fire_points = Array[NodePath]([NodePath("FP1"), NodePath("FP2"), NodePath("FP3"), NodePath("FP4")])
-max_energy = 75.0
-energy_reload = 15.0
+max_energy = 60.0
+energy_reload = 10.0
 shot_energy = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

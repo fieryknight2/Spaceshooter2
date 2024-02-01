@@ -20,7 +20,7 @@ var ship_data = [
 	{
 		"name": "Falcon",
 		"image": preload("res://assets/spaceships/spaceship-3.png"),
-		"description": "A slow sniper with medium health and high damage, with 1 Super Laser"
+		"description": "A slow sniper with high health and high damage, with 1 Super Laser"
 	}
 ]
 
