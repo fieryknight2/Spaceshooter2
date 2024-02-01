@@ -107,6 +107,7 @@ func _process(delta):
 			healthTween = get_tree().create_tween()
 			healthTween.tween_property(Health, "value", e_health_value, duration *
 										(e_health_value/max_health_value))
+			healthTween.play()
 			
 		
 		if e_energy_value != player.energy:

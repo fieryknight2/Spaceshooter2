@@ -41,6 +41,7 @@ max_health = 50
 health_reload = 1.0
 score_modifier = 1.1
 wall_boundaries = 35.0
+wall_margin = 50.0
 explosion = ExtResource("6")
 projectile = ExtResource("7")
 fire_points = Array[NodePath]([NodePath("FP1"), NodePath("FP2"), NodePath("FP3"), NodePath("FP4")])
