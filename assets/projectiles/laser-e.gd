@@ -32,6 +32,6 @@ func _on_laser_area_entered(area):
 		var e = explosion.instantiate()
 		e.position = position
 		e.get_child(0).volume = -25
-		get_tree().current_scene.add_child(e)
+		area.add_child(e)
 		
 		queue_free()

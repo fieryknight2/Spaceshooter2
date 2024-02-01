@@ -1,56 +1,67 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://c5f102j5ck1vs"]
 
-[ext_resource path="res://assets/projectiles/projectile-explode/laser-red-explode.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/laser-splash-1.wav" type="AudioStream" id=4]
+[ext_resource type="Texture2D" uid="uid://cv61tkh5v4xrw" path="res://assets/projectiles/projectile-explode/laser-red-explode.png" id="1"]
+[ext_resource type="Script" path="res://assets/explosions/explosion.gd" id="2"]
+[ext_resource type="Script" path="res://assets/sounds/effect.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://l8yx5rmdot2r" path="res://assets/sounds/laser-splash-1.wav" id="4"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(16, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(32, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(48, 0, 16, 32)
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 32 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(64, 0, 16, 32)
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
 "loop": false,
-"name": "explosion",
+"name": &"explosion",
 "speed": 20.0
-} ]
+}]
 
 [node name="Node2D" type="Node2D"]
+top_level = true
 
 [node name="explode" type="AnimatedSprite2D" parent="."]
-position = Vector2( 0, -23 )
+position = Vector2(0, -23)
 rotation = 3.14159
-frames = SubResource( 6 )
-animation = "explosion"
-script = ExtResource( 2 )
+sprite_frames = SubResource("6")
+animation = &"explosion"
+script = ExtResource("2")
 
 [node name="Effects" type="AudioStreamPlayer2D" parent="explode"]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -30.0
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [connection signal="animation_finished" from="explode" to="explode" method="_on_explode_animation_finished"]
 [connection signal="finished" from="explode/Effects" to="explode/Effects" method="_on_Effects_finished"]
