@@ -42,6 +42,10 @@ var energyTween : Tween
 var e_stylebox_fill : StyleBoxFlat
 var h_stylebox_fill : StyleBoxFlat
 
+func get_speed_scale():
+	return speed_scale
+	
+
 func _ready():
 	get_tree().paused = false
 	var ss = spaceships[Globals.ship].instantiate()
@@ -60,15 +64,6 @@ func _ready():
 	e_energy_value = Energy.value
 	
 	speed_scale = difficulties[Globals.difficulty - 1]
-	
-	healthTween = get_tree().create_tween()
-	energyTween = get_tree().create_tween()
-	
-	energyTween.set_ease(Tween.EASE_IN)
-	energyTween.set_trans(Tween.TRANS_LINEAR)
-	
-	healthTween.set_ease(Tween.EASE_IN)
-	healthTween.set_trans(Tween.TRANS_LINEAR)
 	
 	e_stylebox_fill = StyleBoxFlat.new()
 	h_stylebox_fill = StyleBoxFlat.new()
@@ -105,6 +100,8 @@ func _process(delta):
 			if healthTween:
 				healthTween.kill()
 			healthTween = get_tree().create_tween()
+			healthTween.set_ease(Tween.EASE_IN)
+			healthTween.set_trans(Tween.TRANS_LINEAR)
 			healthTween.tween_property(Health, "value", e_health_value, duration *
 										(e_health_value/max_health_value))
 			healthTween.play()
@@ -119,6 +116,8 @@ func _process(delta):
 			if energyTween:
 				energyTween.kill()
 			energyTween = get_tree().create_tween()
+			energyTween.set_ease(Tween.EASE_IN)
+			energyTween.set_trans(Tween.TRANS_LINEAR)
 			energyTween.tween_property(Energy, "value", e_energy_value,duration * 
 										(e_energy_value/max_energy_value))
 			energyTween.play()
@@ -132,12 +131,16 @@ func _process(delta):
 		if healthTween:
 			healthTween.kill()
 		healthTween = get_tree().create_tween()
+		healthTween.set_ease(Tween.EASE_IN)
+		healthTween.set_trans(Tween.TRANS_LINEAR)
 		healthTween.tween_property(Health, "value", 0.0, abs(h_duration))
 		healthTween.play()
 		
 		if energyTween:
 			energyTween.kill()
 		energyTween = get_tree().create_tween()
+		energyTween.set_ease(Tween.EASE_IN)
+		energyTween.set_trans(Tween.TRANS_LINEAR)
 		energyTween.tween_property(Energy, "value", 0.0, abs(e_duration))
 		energyTween.play()
 		
