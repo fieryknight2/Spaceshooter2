@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bw8vpsoo1sfoa" path="res://assets/spaceships/spaceship-3.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://cnu3xlqqybe6o" path="res://assets/enemies/speed-fighter.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://assets/enemies/baltrai-boss.tscn" id="17"]
+[ext_resource type="StyleBox" uid="uid://opf5umkvxsqo" path="res://panel_style.tres" id="17_63lsu"]
 [ext_resource type="Texture2D" uid="uid://cu2ie4s0tks7p" path="res://assets/enemies/boss-1.png" id="18"]
 [ext_resource type="Script" path="res://assets/Pause.gd" id="19"]
 [ext_resource type="StyleBox" path="res://assets/theme/Pressed.tres" id="20"]
@@ -28,18 +29,6 @@
 [ext_resource type="StyleBox" path="res://assets/theme/Focus.tres" id="24"]
 [ext_resource type="StyleBox" uid="uid://cm8jqkhmll2ux" path="res://assets/enemies/health_bar_bg.tres" id="24_spsir"]
 [ext_resource type="StyleBox" uid="uid://ceaqdhuwq0u2e" path="res://assets/enemies/health_bar_fg.tres" id="25_8jq0w"]
-
-[sub_resource type="StyleBoxFlat" id="4"]
-bg_color = Color(0, 0, 0, 0.588235)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixla5"]
 bg_color = Color(1, 0, 0, 0)
@@ -1443,7 +1432,7 @@ offset_top = 211.0
 offset_right = 380.0
 offset_bottom = 626.0
 theme = ExtResource("22_nluud")
-theme_override_styles/panel = SubResource("4")
+theme_override_styles/panel = ExtResource("17_63lsu")
 
 [node name="container" type="VBoxContainer" parent="UI/Panel"]
 layout_mode = 0
@@ -1496,7 +1485,7 @@ offset_top = 211.0
 offset_right = 380.0
 offset_bottom = 626.0
 theme = ExtResource("22_nluud")
-theme_override_styles/panel = SubResource("4")
+theme_override_styles/panel = ExtResource("17_63lsu")
 script = ExtResource("19")
 
 [node name="container" type="VBoxContainer" parent="UI/Pause"]
