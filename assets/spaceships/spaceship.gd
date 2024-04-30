@@ -171,6 +171,7 @@ func _process(delta):
 		if energy > shot_energy:
 			$Reload.start(reload_time / get_tree().current_scene.speed_scale)
 		
+		fire_points.shuffle(); # Randomly fire from different points when low on energy
 		for p in fire_points:
 			if energy < shot_energy:
 				continue
