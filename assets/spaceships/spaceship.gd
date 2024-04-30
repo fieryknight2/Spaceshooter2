@@ -60,7 +60,7 @@ func _process(delta):
 		var dir_to = pos - position
 		move = dir_to.normalized() # make sure move is within bounds (-1, 1)
 	
-	# increment velocity by acceleration: (I understand I haven't taken physics yet)
+	# increment velocity by acceleration:
 	var accel = delta * move * action_speed
 	velocity += accel
 	
