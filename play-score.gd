@@ -1,12 +1,8 @@
 extends Node2D
 
 @export var spaceships : Array[PackedScene]
-var score = 0
 @export var speed_up : float
 @export var health_speed_up : float
-var score_mod = 1
-var speed_scale = 1
-var health_scale = 1
 @export var text_name_path : NodePath
 @export var text_name_2_path : NodePath
 @export var boss_health_path : NodePath
@@ -18,10 +14,16 @@ var health_scale = 1
 @export var max_energy_color : Color
 @export var no_energy_color : Color
 
-@export var difficulties : Array[float]
-
 @export var animation_speed : float
 
+@export var speed_scale : float = 4
+
+@onready var Health : ProgressBar = get_node("%Health")
+@onready var Energy : ProgressBar = get_node("%Energy")
+
+var score = 0
+var score_mod = 1
+var health_scale = 1
 var player_alive = true
 var player = null
 var rom = false
@@ -35,9 +37,6 @@ var die_once = false
 
 var healthTween : Tween
 var energyTween : Tween
-
-@onready var Health : ProgressBar = get_node("%Health")
-@onready var Energy : ProgressBar = get_node("%Energy")
 
 var e_stylebox_fill : StyleBoxFlat
 var h_stylebox_fill : StyleBoxFlat
@@ -53,17 +52,28 @@ func _ready():
 	add_child(ss)
 	player = ss
 	
+	var d_mod : float = (5 - Globals.difficulty) / 4.0 # Since Globals.difficulty ranges from 0-4
+													 # This will map to a float from 1/4 to 1
+	d_mod = (d_mod / 2) + 0.5 # maps from 1/4-1 to 0.625-1 where 1 is easiest and 0.6 is hardest
+	
+	player.max_health *= d_mod
+	player.health = player.max_health
+	
+	player.max_energy *= d_mod
+	player.energy = player.max_energy
+	
+	player.health_reload *= d_mod
+	player.energy_reload *= d_mod
+	
 	Health.max_value = player.max_health
 	Health.value = player.health
-	max_health_value = player.max_health
-	e_health_value = Health.value 
+	max_health_value = player.max_health 
+	e_health_value = Health.value
 	
 	Energy.max_value = player.max_energy
 	Energy.value = player.energy
 	max_energy_value = player.max_energy
 	e_energy_value = Energy.value
-	
-	speed_scale = difficulties[Globals.difficulty - 1]
 	
 	e_stylebox_fill = StyleBoxFlat.new()
 	h_stylebox_fill = StyleBoxFlat.new()
