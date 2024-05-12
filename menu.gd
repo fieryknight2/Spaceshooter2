@@ -113,7 +113,6 @@ func _on_Back_pressed():
 	$AnimationPlayer.play("hide_ships")
 	mode = "menu"
 
-
 func _on_Back_Overview_pressed():
 	$AnimationPlayer.play("hide_overview")
 
@@ -133,7 +132,6 @@ func _on_S1_pressed():
 	$AnimationPlayer.play("hide_ships")
 	mode = "overview"
 
-
 func _on_S2_pressed():
 	cship = 1
 	set_overview()
@@ -148,8 +146,6 @@ func _on_S3_pressed():
 
 func _on_Back_Highscores_pressed():
 	$AnimationPlayer.play("Hide Scores")
-
-
 
 func _on_Music_finished():
 	$Music.play()
