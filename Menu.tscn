@@ -2903,10 +2903,10 @@ anchor_left = -1.491
 anchor_top = 0.395
 anchor_right = -1.491
 anchor_bottom = 0.395
-offset_left = -500.0
-offset_top = 50.0
-offset_right = -188.0
-offset_bottom = 822.0
+offset_left = -1170.95
+offset_top = 366.0
+offset_right = -858.95
+offset_bottom = 1138.0
 
 [node name="EndlessPlay" type="Button" parent="Buttons"]
 layout_mode = 0

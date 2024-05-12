@@ -29,6 +29,8 @@ var size_y = 0
 
 var margin_effect = 0.15
 
+signal player_death
+
 func _ready():
 	# set spaceship position
 	position.x = get_viewport().size.x / 2
@@ -205,15 +207,16 @@ func _process(delta):
 		energy = clamp(energy, 0, max_energy)
 
 func die():
-	Input.start_joy_vibration(0, 1, 1, 1)
+	emit_signal("player_death")
+	
+	Input.start_joy_vibration(0, 1, 1, 1) # play haptics
+	
 	# boom
 	var e = explosion.instantiate()
 	e.scale = scale
 	e.position = position
 	e.volume = -10
 	get_tree().current_scene.add_child(e)
-		
-	get_tree().current_scene.player_die()
 	
 	queue_free()
 

@@ -33,7 +33,6 @@ var e_health_value
 var e_energy_value
 var max_energy_value
 var max_health_value
-var die_once = false
 
 var healthTween : Tween
 var energyTween : Tween
@@ -93,6 +92,9 @@ func _ready():
 	Energy.add_theme_stylebox_override("fill", e_stylebox_fill)
 	Health.add_theme_stylebox_override("fill", h_stylebox_fill)
 	
+	# Connect signals
+	player.connect("player_death", player_die)
+	
 	
 func _process(delta):
 	score = int(score)
@@ -131,29 +133,7 @@ func _process(delta):
 			energyTween.tween_property(Energy, "value", e_energy_value,duration * 
 										(e_energy_value/max_energy_value))
 			energyTween.play()
-			
-	elif !die_once:
-		die_once = true
-		var t = 5
-		var h_duration = animation_speed / t / (e_health_value / max_health_value) 
-		var e_duration = animation_speed / t / (e_energy_value / max_energy_value)
-		
-		if healthTween:
-			healthTween.kill()
-		healthTween = get_tree().create_tween()
-		healthTween.set_ease(Tween.EASE_IN)
-		healthTween.set_trans(Tween.TRANS_LINEAR)
-		healthTween.tween_property(Health, "value", 0.0, abs(h_duration))
-		healthTween.play()
-		
-		if energyTween:
-			energyTween.kill()
-		energyTween = get_tree().create_tween()
-		energyTween.set_ease(Tween.EASE_IN)
-		energyTween.set_trans(Tween.TRANS_LINEAR)
-		energyTween.tween_property(Energy, "value", 0.0, abs(e_duration))
-		energyTween.play()
-		
+	
 	e_stylebox_fill.bg_color = no_energy_color.lerp( 
 							max_energy_color, Energy.value / Energy.max_value)
 			
@@ -189,6 +169,26 @@ func player_die():
 	
 	$EnemySpawner.queue_free()
 	$PlanetSpawner.queue_free()
+	
+	var t = 5 # length of time for animation to take
+	var h_duration = animation_speed / t / (e_health_value / max_health_value) # TODO: Rework this
+	var e_duration = animation_speed / t / (e_energy_value / max_energy_value)
+	
+	if healthTween:
+		healthTween.kill()
+	healthTween = get_tree().create_tween()
+	healthTween.set_ease(Tween.EASE_IN)
+	healthTween.set_trans(Tween.TRANS_LINEAR)
+	healthTween.tween_property(Health, "value", 0.0, abs(h_duration))
+	healthTween.play()
+	
+	if energyTween:
+		energyTween.kill()
+	energyTween = get_tree().create_tween()
+	energyTween.set_ease(Tween.EASE_IN)
+	energyTween.set_trans(Tween.TRANS_LINEAR)
+	energyTween.tween_property(Energy, "value", 0.0, abs(e_duration))
+	energyTween.play()
 
 func _on_Restart_pressed():
 	rom = true
