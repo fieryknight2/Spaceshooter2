@@ -16,7 +16,9 @@ extends Node2D
 
 @export var animation_speed : float
 
-@export var speed_scale : float = 4
+@export var speed_scale : float = 4 :
+	get:
+		return speed_scale
 
 @onready var Health : ProgressBar = get_node("%Health")
 @onready var Energy : ProgressBar = get_node("%Energy")
@@ -24,8 +26,7 @@ extends Node2D
 var score = 0
 var score_mod = 1
 var health_scale = 1
-var player_alive = true
-var player = null
+		
 var rom = false
 var boss = null
 var ship_names = ["Swallow", "Swift", "Falcon"]
@@ -34,15 +35,16 @@ var e_energy_value
 var max_energy_value
 var max_health_value
 
+var player_alive = true
+var player = null :
+	get:
+		return player
+
 var healthTween : Tween
 var energyTween : Tween
 
 var e_stylebox_fill : StyleBoxFlat
 var h_stylebox_fill : StyleBoxFlat
-
-func get_speed_scale():
-	return speed_scale
-	
 
 func _ready():
 	get_tree().paused = false
