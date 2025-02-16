@@ -60,44 +60,25 @@ func _process(delta):
 		var pos = get_viewport().get_mouse_position()
 		# use simple geometry to get direction towards mouse
 		var dir_to = pos - position
-		move = dir_to.normalized() # make sure move is within bounds (-1, 1)
+		move = dir_to
+	move = move.normalized() # make sure move always has a magnitude of 1
 	
 	# increment velocity by acceleration:
 	var accel = delta * move * action_speed
 	velocity += accel
 	
+	# implement some sort of deceleration
+	velocity.x = lerpf(velocity.x, 0, deceleration * delta)
+	velocity.y = lerpf(velocity.y, 0, deceleration * delta)
+	
 	velocity.x = clamp(velocity.x, -max_velocity, max_velocity) # keep x velocity within bounds
 	velocity.y = clamp(velocity.y, -max_velocity, max_velocity) # keep y velocity within bounds
 	
-	# double the deceleration speed if changing direction
-	if move.x > 0 and velocity.x < 0: # if going right (positive x) and moving left
-		velocity.x += deceleration * delta 
-	if move.x < 0 and velocity.x > 0: # if going left (negative x) and moving right
-		velocity.x -= deceleration * delta
-	if move.y > 0 and velocity.y < 0: # if going down (positive y) and moving up
-		velocity.y += deceleration * delta
-	if move.y < 0 and velocity.y > 0: # if going up (negative y) and moving down
-		velocity.y -= deceleration * delta
-	
-	# implement deceleration
-	if move.x == 0: # if no movement is requested on x axis:
-		if velocity.x > 0:
-			velocity.x -= deceleration * delta # reduce velocity if it's more than 0
-			# keep velocity from going below 0 (and going in circles)
-			velocity.x = clamp(velocity.x, 0, max_velocity) 
-		if velocity.x < 0: 
-			velocity.x += deceleration * delta # increase velocity if it's less than 0
-			# keep velocity from going back above 0 (and going in circles)
-			velocity.x = clamp(velocity.x, -max_velocity, 0)
-	if move.y == 0: # same for y axis
-		if velocity.y > 0:
-			velocity.y -= deceleration * delta # decrease velocity if it's more than 0
-			# prevent circles
-			velocity.y = clamp(velocity.y, 0, max_velocity)
-		if velocity.y < 0:
-			velocity.y += deceleration * delta # increase velocity if it's less than 0
-			# prevent circles
-			velocity.y = clamp(velocity.y, -max_velocity, 0)
+	# Prevent shaky spaceships
+	#if velocity.x > -(delta * action_speed / 2) and velocity.x < (delta * action_speed / 2):
+	#	velocity.x = 0
+	#if velocity.y > -(delta * action_speed / 2) and velocity.y < (delta * action_speed / 2):
+	#	velocity.y = 0
 	
 	# Code here is for automatic deceleration as we get close to the wall
 	# (so it doesn't feel so solid)
@@ -188,15 +169,16 @@ func _process(delta):
 		Input.start_joy_vibration(0, 1, 0.1, 0.1)
 		th = health
 		
+	$Health.value = health
+	
 	# check if the spaceship is still alive
 	if (health <= 0):
 		die()
 	else:
 		if energy > health_reload * delta:
-			if health != max_health:
+			if health < max_health:
 				energy -= health_reload * delta * get_tree().current_scene.speed_scale
 				health += health_reload * delta * get_tree().current_scene.speed_scale
-				$Health.value = health
 				$Health.show()
 			else:
 				$Health.hide()

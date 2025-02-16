@@ -3420,7 +3420,7 @@ anchor_bottom = 1.0
 offset_left = -196.0
 offset_top = -28.0
 theme_override_fonts/font = SubResource("20")
-text = "Music from Pixabay"
+text = "Music from Pixabay."
 horizontal_alignment = 2
 vertical_alignment = 2
 

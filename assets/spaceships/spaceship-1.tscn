@@ -31,10 +31,10 @@ ProgressBar/styles/fg = SubResource("2")
 [node name="Spaceship" type="Area2D" groups=["ships"]]
 z_index = 100
 script = ExtResource("5")
-move_speed = 10.0
-action_speed = 20.0
-max_velocity = 30.0
-deceleration = 20.0
+move_speed = 60.0
+action_speed = 40.0
+max_velocity = 80.0
+deceleration = 10.0
 reload_time = 0.3
 damage = 2
 max_health = 50
