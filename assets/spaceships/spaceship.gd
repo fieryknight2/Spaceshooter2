@@ -168,7 +168,8 @@ func _process(delta):
 	if th > health:
 		Input.start_joy_vibration(0, 1, 0.1, 0.1)
 		th = health
-		
+	
+	$Health.max_value = max_health
 	$Health.value = health
 	
 	# check if the spaceship is still alive
