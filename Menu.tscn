@@ -2030,10 +2030,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
 
 [sub_resource type="FontFile" id="11"]
 fallbacks = Array[Font]([ExtResource("3")])
@@ -2183,6 +2183,18 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="27"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Music:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="25"]
 resource_name = "Show Difficulties"
@@ -2443,22 +2455,10 @@ tracks/11/path = NodePath("Music:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0.65),
+"times": PackedFloat32Array(-0.05),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Music:volume_db")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0.7, 1.5),
-"transitions": PackedFloat32Array(1, 2.37841),
-"update": 0,
-"values": [-50.0, 0.0]
 }
 
 [sub_resource type="Animation" id="8"]
@@ -2903,10 +2903,10 @@ anchor_left = -1.491
 anchor_top = 0.395
 anchor_right = -1.491
 anchor_bottom = 0.395
-offset_left = -1841.9
-offset_top = 682.0
-offset_right = -1529.9
-offset_bottom = 1454.0
+offset_left = 170.95
+offset_top = -266.0
+offset_right = 482.95
+offset_bottom = 506.0
 
 [node name="EndlessPlay" type="Button" parent="Buttons"]
 layout_mode = 0
@@ -3089,6 +3089,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = SubResource("11")
 text = "Swift"
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Description" type="Label" parent="ShipOverview/VManage"]
@@ -3096,6 +3097,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = SubResource("12")
 text = "Weak but fast ship, with two Triple Lasers for blasting asteroids in style."
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="space" type="Control" parent="ShipOverview/VManage"]

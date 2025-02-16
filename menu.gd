@@ -34,7 +34,7 @@ func _ready():
 	$Buttons.position = Vector2(-1000, -1000)
 	get_tree().paused = false
 	$AnimationPlayer.play("enter")
-	# $MusicOff.play("Start Music")
+	$MusicOff.play("Start Music")
 	
 	Globals.process_scores()
 	for score in Globals.high_scores:
@@ -44,7 +44,7 @@ func _ready():
 		c.highscore_score = score["score"]
 		
 		scores.add_child(c)
-	print("Hello World")
+	
 
 func _process(_delta):
 	if $Music.playing == false:
