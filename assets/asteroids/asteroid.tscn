@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyeiim8xd01d6"]
 
-[ext_resource type="Script" path="res://assets/asteroids/asteroid.gd" id="2"]
-[ext_resource type="PackedScene" path="res://assets/asteroids/asteroid-chunk.tscn" id="3"]
+[ext_resource type="Script" uid="uid://drfvy56jgkjeu" path="res://assets/asteroids/asteroid.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b0ers8jywgtpb" path="res://assets/asteroids/asteroid-chunk.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://brh5lxw3k3tty" path="res://assets/asteroids/baby-asteroid.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://assets/explosions/explosion.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://bx168lepbo60d" path="res://assets/asteroids/asteroid-cracks.png" id="8"]
-[ext_resource type="PackedScene" path="res://assets/asteroids/Asteroid-1.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://assets/asteroids/Asteroid-2.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://assets/asteroids/Asteroid-3.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://si224o3jq2xo" path="res://assets/asteroids/Asteroid-1.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dfjy5vrp5n3j" path="res://assets/asteroids/Asteroid-2.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cx81mgsn6t8db" path="res://assets/asteroids/Asteroid-3.tscn" id="11"]
 
 [node name="Asteroid" type="Area2D" groups=["asteroids"]]
 script = ExtResource("2")

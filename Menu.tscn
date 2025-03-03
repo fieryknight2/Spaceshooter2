@@ -1,9 +1,9 @@
 [gd_scene load_steps=46 format=3 uid="uid://dcprglooaobd"]
 
-[ext_resource type="PackedScene" path="res://assets/Star.tscn" id="1"]
-[ext_resource type="Script" path="res://spawners/StarSpawner.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dqmww10k01at7" path="res://assets/Star.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c5mnyoarjdmv" path="res://spawners/StarSpawner.gd" id="2"]
 [ext_resource type="FontFile" uid="uid://b48bjbrmi4g4h" path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" id="3"]
-[ext_resource type="Script" path="res://menu.gd" id="4"]
+[ext_resource type="Script" uid="uid://c6jl0epjbtlml" path="res://menu.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://hw4hiaophqw4" path="res://PlayScene.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://cnv8s46q87iil" path="res://assets/spaceships/spaceship-2.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://c7waxw0ubbrcu" path="res://assets/spaceships/spaceship.png" id="7"]
@@ -2783,17 +2783,17 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7fmqf"]
 _data = {
-"Hide Difficulties": SubResource("26"),
-"Hide Scores": SubResource("19"),
-"RESET": SubResource("27"),
-"Show Difficulties": SubResource("25"),
-"Show Scores": SubResource("18"),
-"enter": SubResource("7"),
-"exit": SubResource("8"),
-"hide_overview": SubResource("16"),
-"hide_ships": SubResource("14"),
-"overview_ship": SubResource("15"),
-"show_ships": SubResource("13")
+&"Hide Difficulties": SubResource("26"),
+&"Hide Scores": SubResource("19"),
+&"RESET": SubResource("27"),
+&"Show Difficulties": SubResource("25"),
+&"Show Scores": SubResource("18"),
+&"enter": SubResource("7"),
+&"exit": SubResource("8"),
+&"hide_overview": SubResource("16"),
+&"hide_ships": SubResource("14"),
+&"overview_ship": SubResource("15"),
+&"show_ships": SubResource("13")
 }
 
 [sub_resource type="FontFile" id="20"]
@@ -2854,9 +2854,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r33ri"]
 _data = {
-"Kill Music": SubResource("21"),
-"RESET": SubResource("22"),
-"Start Music": SubResource("23")
+&"Kill Music": SubResource("21"),
+&"RESET": SubResource("22"),
+&"Start Music": SubResource("23")
 }
 
 [node name="Menu" type="Control"]

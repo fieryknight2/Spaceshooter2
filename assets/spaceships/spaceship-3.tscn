@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://bw8vpsoo1sfoa"]
 
-[ext_resource type="Script" path="res://assets/spaceships/spaceship.gd" id="1"]
+[ext_resource type="Script" uid="uid://dq52tp5u0efja" path="res://assets/spaceships/spaceship.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dx6gxv1x0se8w" path="res://assets/spaceships/blue.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://rtobd7ap6mwf" path="res://assets/spaceships/green.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://ns45mn7fh06v" path="res://assets/spaceships/red.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://km6rq7lr3d02" path="res://assets/spaceships/spaceship-3.png" id="5"]
-[ext_resource type="PackedScene" path="res://assets/explosions/explosion.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://assets/projectiles/laser-blue.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://506xm00qgsb7" path="res://assets/explosions/explosion.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://y2tfwik2qsx6" path="res://assets/projectiles/laser-blue.tscn" id="7"]
 [ext_resource type="StyleBox" uid="uid://cm8jqkhmll2ux" path="res://assets/enemies/health_bar_bg.tres" id="8_e8d81"]
 [ext_resource type="StyleBox" uid="uid://ceaqdhuwq0u2e" path="res://assets/enemies/health_bar_fg.tres" id="9_yqu3f"]
 

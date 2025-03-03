@@ -1,25 +1,25 @@
 [gd_scene load_steps=42 format=3 uid="uid://hw4hiaophqw4"]
 
 [ext_resource type="PackedScene" uid="uid://dyeiim8xd01d6" path="res://assets/asteroids/asteroid.tscn" id="1"]
-[ext_resource type="Script" path="res://spawners/StarSpawner.gd" id="2"]
-[ext_resource type="PackedScene" path="res://assets/Star.tscn" id="3"]
-[ext_resource type="Script" path="res://spawners/AsteroidSpawner.gd" id="4"]
-[ext_resource type="Script" path="res://spawners/PlanetSpawner.gd" id="5"]
-[ext_resource type="PackedScene" path="res://assets/planets/mud-planet.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://assets/planets/water-planet.tscn" id="7"]
+[ext_resource type="Script" uid="uid://c5mnyoarjdmv" path="res://spawners/StarSpawner.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://dqmww10k01at7" path="res://assets/Star.tscn" id="3"]
+[ext_resource type="Script" uid="uid://2j03gw70q7en" path="res://spawners/AsteroidSpawner.gd" id="4"]
+[ext_resource type="Script" uid="uid://bsmwmiieji3il" path="res://spawners/PlanetSpawner.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://5737cybnnmyp" path="res://assets/planets/mud-planet.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dhlnh14uky30l" path="res://assets/planets/water-planet.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://c70b0j7p2uwng" path="res://assets/spaceships/spaceship-1.tscn" id="8"]
-[ext_resource type="Script" path="res://spawners/EnemySpawner.gd" id="9"]
+[ext_resource type="Script" uid="uid://c1g5ijq45fs5y" path="res://spawners/EnemySpawner.gd" id="9"]
 [ext_resource type="PackedScene" uid="uid://cswajmypdb1sg" path="res://assets/enemies/fillen-fighter.tscn" id="10"]
 [ext_resource type="FontFile" uid="uid://b48bjbrmi4g4h" path="res://assets/font/EdgeOfTheGalaxyRegular-OVEa6.otf" id="11"]
-[ext_resource type="Script" path="res://play-score.gd" id="12"]
+[ext_resource type="Script" uid="uid://dnbue38qyc227" path="res://play-score.gd" id="12"]
 [ext_resource type="PackedScene" uid="uid://cmmf33mwjlf0d" path="res://assets/spaceships/spaceship-2.tscn" id="13"]
 [ext_resource type="FontFile" uid="uid://djmg6xs1eghw6" path="res://assets/font/ButtonText.tres" id="14"]
 [ext_resource type="PackedScene" uid="uid://bw8vpsoo1sfoa" path="res://assets/spaceships/spaceship-3.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://cnu3xlqqybe6o" path="res://assets/enemies/speed-fighter.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://assets/enemies/baltrai-boss.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://bg6mmipdnsrh2" path="res://assets/enemies/baltrai-boss.tscn" id="17"]
 [ext_resource type="StyleBox" uid="uid://opf5umkvxsqo" path="res://panel_style.tres" id="17_63lsu"]
 [ext_resource type="Texture2D" uid="uid://cu2ie4s0tks7p" path="res://assets/enemies/boss-1.png" id="18"]
-[ext_resource type="Script" path="res://assets/Pause.gd" id="19"]
+[ext_resource type="Script" uid="uid://0bjqdp8moj2y" path="res://assets/Pause.gd" id="19"]
 [ext_resource type="StyleBox" path="res://assets/theme/Pressed.tres" id="20"]
 [ext_resource type="StyleBox" path="res://assets/theme/Normal.tres" id="21"]
 [ext_resource type="StyleBox" path="res://assets/theme/Disabled.tres" id="22"]
@@ -1349,11 +1349,11 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yibcv"]
 _data = {
-"RESET": SubResource("17"),
-"finish": SubResource("9"),
-"hide_pause": SubResource("13"),
-"player_dead": SubResource("8"),
-"show_pause": SubResource("12")
+&"RESET": SubResource("17"),
+&"finish": SubResource("9"),
+&"hide_pause": SubResource("13"),
+&"player_dead": SubResource("8"),
+&"show_pause": SubResource("12")
 }
 
 [node name="PlayScene" type="Node2D"]

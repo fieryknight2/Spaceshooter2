@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://d0cg0ko7e02am"]
 
 [ext_resource type="Texture2D" uid="uid://cv61tkh5v4xrw" path="res://assets/projectiles/projectile-explode/laser-red-explode.png" id="1"]
-[ext_resource type="Script" path="res://assets/explosions/explosion.gd" id="2"]
-[ext_resource type="Script" path="res://assets/sounds/effect.gd" id="3"]
+[ext_resource type="Script" uid="uid://cyswbdrhsoaic" path="res://assets/explosions/explosion.gd" id="2"]
+[ext_resource type="Script" uid="uid://b2i3xm4d73i1q" path="res://assets/sounds/effect.gd" id="3"]
 [ext_resource type="AudioStream" uid="uid://l8yx5rmdot2r" path="res://assets/sounds/laser-splash-1.wav" id="4"]
 
 [sub_resource type="AtlasTexture" id="1"]

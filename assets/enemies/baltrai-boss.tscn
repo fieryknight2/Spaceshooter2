@@ -2,15 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cu2ie4s0tks7p" path="res://assets/enemies/boss-1.png" id="1"]
 [ext_resource type="PackedScene" path="res://assets/enemies/enemy-turret.tscn" id="2"]
-[ext_resource type="Script" path="res://assets/enemies/baltrai-boss.gd" id="3"]
+[ext_resource type="Script" uid="uid://ci3ekao5j0408" path="res://assets/enemies/baltrai-boss.gd" id="3"]
 [ext_resource type="PackedScene" path="res://assets/explosions/explosion.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://assets/projectiles/laser-red-big.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://assets/projectiles/laser-red.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://assets/projectiles/laser-red-small.tscn" id="7"]
 
 [sub_resource type="Curve" id="1"]
-min_value = 1.0
-max_value = 5.0
+_limits = [0.99, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 

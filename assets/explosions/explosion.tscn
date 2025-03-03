@@ -1,56 +1,68 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://506xm00qgsb7"]
 
-[ext_resource path="res://assets/explosions/explosion.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/explosions/explosion.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/effect.gd" type="Script" id=3]
-[ext_resource path="res://assets/sounds/explosion-2.wav" type="AudioStream" id=4]
+[ext_resource type="Texture2D" uid="uid://dfmymive1mxm" path="res://assets/explosions/explosion.png" id="1"]
+[ext_resource type="Script" uid="uid://cyswbdrhsoaic" path="res://assets/explosions/explosion.gd" id="2"]
+[ext_resource type="Script" uid="uid://b2i3xm4d73i1q" path="res://assets/sounds/effect.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://dcjmdth8berbn" path="res://assets/sounds/explosion-2.wav" id="4"]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("1")
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("1")
+region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 256, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("1")
+region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 384, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("1")
+region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 512, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("1")
+region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 640, 0, 128, 128 )
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("1")
+region = Rect2(640, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+[sub_resource type="SpriteFrames" id="7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}],
 "loop": false,
-"name": "explosion",
+"name": &"explosion",
 "speed": 15.0
-} ]
+}]
 
 [node name="explosion" type="AnimatedSprite2D"]
-frames = SubResource( 7 )
+frames = SubResource("7")
 animation = "explosion"
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Effects" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-script = ExtResource( 3 )
+stream = ExtResource("4")
+script = ExtResource("3")
 
 [connection signal="animation_finished" from="." to="." method="_on_explosion_animation_finished"]
 [connection signal="finished" from="Effects" to="Effects" method="_on_Effects_finished"]

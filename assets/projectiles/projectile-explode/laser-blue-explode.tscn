@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://ca05s4xtw0gdu"]
 
-[ext_resource type="Script" path="res://assets/explosions/explosion.gd" id="1"]
+[ext_resource type="Script" uid="uid://cyswbdrhsoaic" path="res://assets/explosions/explosion.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dm5c3roop38wl" path="res://assets/projectiles/projectile-explode/laser-blue-explode.png" id="2"]
-[ext_resource type="Script" path="res://assets/sounds/effect.gd" id="3"]
+[ext_resource type="Script" uid="uid://b2i3xm4d73i1q" path="res://assets/sounds/effect.gd" id="3"]
 
 [sub_resource type="AtlasTexture" id="1"]
 atlas = ExtResource("2")

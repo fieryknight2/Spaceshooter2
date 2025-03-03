@@ -1,35 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://c3tfagcc04275"]
 
-[ext_resource path="res://assets/projectiles/laser-red.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/projectiles/laser-e.gd" type="Script" id=2]
-[ext_resource path="res://assets/projectiles/projectile-explode/laser-red-small-explode.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sounds/laser-2.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/sounds/effect.gd" type="Script" id=5]
+[ext_resource type="Texture2D" uid="uid://dh1a3cniphspp" path="res://assets/projectiles/laser-red.png" id="1"]
+[ext_resource type="Script" uid="uid://p8gqefbyhxs2" path="res://assets/projectiles/laser-e.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://d0cg0ko7e02am" path="res://assets/projectiles/projectile-explode/laser-red-small-explode.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://bad7mlgxpk4g0" path="res://assets/sounds/laser-2.wav" id="4"]
+[ext_resource type="Script" uid="uid://b2i3xm4d73i1q" path="res://assets/sounds/effect.gd" id="5"]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id="1"]
 radius = 1.0
 height = 18.0
 
 [node name="laser" type="Area2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 move_speed = 700.0
-explosion = ExtResource( 3 )
+explosion = ExtResource("3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( 0, -2.38419e-07 )
-scale = Vector2( 0.5, 1.25 )
-texture = ExtResource( 1 )
+position = Vector2(0, -2.38419e-07)
+scale = Vector2(0.5, 1.25)
+texture = ExtResource("1")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="Effects" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -15.0
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [connection signal="area_entered" from="." to="." method="_on_laser_area_entered"]
 [connection signal="finished" from="Effects" to="Effects" method="_on_Effects_finished"]

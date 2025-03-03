@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://b0ers8jywgtpb"]
 
-[ext_resource path="res://assets/asteroids/asteroid-chunk.png" type="Texture2D" id=1]
-[ext_resource path="res://assets/asteroids/asteroid-chunk.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://5w4ipblulayr" path="res://assets/asteroids/asteroid-chunk.png" id="1"]
+[ext_resource type="Script" uid="uid://bggrvkwquxcn4" path="res://assets/asteroids/asteroid-chunk.gd" id="2"]
 
 [node name="Chunk" type="Node2D"]
 z_index = -25
-script = ExtResource( 2 )
+script = ExtResource("2")
 speed_value = 15.0
 rotate_speed = 20.0
 fade_speed = 0.5
 
 [node name="image" type="Sprite2D" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
